@@ -15,20 +15,20 @@ const services = [
   {
     n: "01",
     title: "Wedding Documentation",
-    desc: "Film & foto pernikahan yang personal dan sinematik — dari persiapan hingga resepsi.",
-    tags: ["Wedding Film", "Prewedding", "Same-Day Edit"],
+    desc: "Photo and video coverage for wedding days, built around emotion, ceremony details, venue atmosphere, and a cinematic final story.",
+    tags: ["Wedding Film", "Event Coverage", "Highlight Edit"],
   },
   {
     n: "02",
     title: "Brand & Social Media",
-    desc: "Strategi konten dan pengelolaan feed, reels, hingga TikTok untuk identitas brand yang konsisten.",
+    desc: "Content strategy and visual handling for Instagram feeds, reels, TikTok, and brand communication that stays consistent over time.",
     tags: ["Content Strategy", "Feed & Reels", "TikTok"],
   },
   {
     n: "03",
     title: "Creative Direction",
-    desc: "Sesi studio, fotografi produk, dan pengembangan konsep visual untuk brand Anda.",
-    tags: ["Product Photography", "Studio Session", "Concept Development"],
+    desc: "Concept development, product visuals, studio direction, and campaign ideas for brands that need a clearer visual presence.",
+    tags: ["Product Visuals", "Studio Session", "Concept Development"],
   },
 ];
 
@@ -54,11 +54,11 @@ export default function Services() {
           <span className="w-6 text-text">
             <SiruntuMark animate={false} />
           </span>
-          <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">Layanan</span>
+          <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">Services</span>
         </motion.div>
 
         <motion.p variants={fadeUp} className="mt-8 max-w-2xl font-display text-2xl leading-snug text-text sm:text-3xl lg:text-4xl">
-          Tiga hal yang paling sering kami kerjakan bersama klien.
+          Three focused ways we help moments, brands, and ideas become publish-ready visual stories.
         </motion.p>
 
         <div className="mt-14 border-t border-line lg:mt-16">
@@ -83,9 +83,9 @@ export default function Services() {
         </div>
 
         <motion.div variants={fadeUp} className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between lg:mt-16">
-          <p className="font-display text-xl italic text-gold-soft sm:text-2xl">Punya proyek dalam pikiran?</p>
+          <p className="font-display text-xl italic text-gold-soft sm:text-2xl">Have a project in mind?</p>
           <a href="#contact" className="rounded-full bg-gold px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-bg transition-colors hover:bg-gold-soft sm:text-sm">
-            Hubungi Kami
+            Contact Us
           </a>
         </motion.div>
       </motion.div>

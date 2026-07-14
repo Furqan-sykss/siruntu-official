@@ -26,17 +26,17 @@ const desktopImages = [
 ];
 
 const mobileImages = [
-  { src: "/img/IMG-20240313-WA0000.jpg", alt: "Documentation placeholder 01" },
-  { src: "/img/IMG-20240313-WA0001.jpg", alt: "Documentation placeholder 02" },
-  { src: "/img/IMG-20240313-WA0007.jpg", alt: "Documentation placeholder 03" },
-  { src: "/img/IMG-20240313-WA0008.jpg", alt: "Documentation placeholder 04" },
-  { src: "/img/IMG-20240313-WA0012.jpg", alt: "Documentation placeholder 05" },
-  { src: "/img/IMG-20240313-WA0021.jpg", alt: "Documentation placeholder 06" },
-  { src: "/img/IMG-20240313-WA0051.jpg", alt: "Documentation placeholder 07" },
-  { src: "/img/IMG-20240313-WA0056.jpg", alt: "Documentation placeholder 08" },
-  { src: "/img/IMG-20240313-WA0061.jpg", alt: "Documentation placeholder 09" },
-  { src: "/img/IMG-20240313-WA0063.jpg", alt: "Documentation placeholder 10" },
-  { src: "/img/IMG-20240313-WA0064.jpeg", alt: "Documentation placeholder 11" },
+  { src: "/img/IMG-20240313-WA0000.jpg", alt: "SIRUNTU wedding documentation moment 01" },
+  { src: "/img/IMG-20240313-WA0001.jpg", alt: "SIRUNTU wedding documentation moment 02" },
+  { src: "/img/IMG-20240313-WA0007.jpg", alt: "SIRUNTU wedding documentation moment 03" },
+  { src: "/img/IMG-20240313-WA0008.jpg", alt: "SIRUNTU wedding documentation moment 04" },
+  { src: "/img/IMG-20240313-WA0012.jpg", alt: "SIRUNTU wedding documentation moment 05" },
+  { src: "/img/IMG-20240313-WA0021.jpg", alt: "SIRUNTU wedding documentation moment 06" },
+  { src: "/img/IMG-20240313-WA0051.jpg", alt: "SIRUNTU wedding documentation moment 07" },
+  { src: "/img/IMG-20240313-WA0056.jpg", alt: "SIRUNTU wedding documentation moment 08" },
+  { src: "/img/IMG-20240313-WA0061.jpg", alt: "SIRUNTU wedding documentation moment 09" },
+  { src: "/img/IMG-20240313-WA0063.jpg", alt: "SIRUNTU wedding documentation moment 10" },
+  { src: "/img/IMG-20240313-WA0064.jpeg", alt: "SIRUNTU wedding documentation moment 11" },
 ];
 
 export default function Documentation() {
@@ -87,9 +87,9 @@ export default function Documentation() {
         <div className="bg-[#f5f4f3] px-6 pb-12 pt-20">
           <div className="mx-auto max-w-3xl text-center">
             <p className="text-xs uppercase tracking-[0.32em] text-[#b85d89]">Documentation</p>
-            <h2 className="mt-4 font-display text-4xl leading-none text-[#171b2c] sm:text-5xl">Every project deserves a visual story that feels polished and alive.</h2>
+            <h2 className="mt-4 font-display text-4xl leading-none text-[#171b2c] sm:text-5xl">Every project deserves a visual story that feels polished, human, and alive.</h2>
             <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#6b7290] sm:text-base">
-              From event coverage to branded moments, we shape documentation into a clean, cinematic portfolio presentation that feels premium across every screen.
+              From wedding coverage to branded social media moments, we turn raw documentation into a clean, cinematic presentation that feels premium across every screen.
             </p>
           </div>
 
@@ -102,8 +102,8 @@ export default function Documentation() {
           <div className="mx-auto flex min-h-[52vh] max-w-5xl items-center px-6 py-20 text-center sm:px-10 lg:px-12">
             <div className="w-full">
               <p className="text-xs uppercase tracking-[0.34em] text-black/45">Documentation</p>
-              <h2 className="mt-4 font-display text-5xl leading-[0.94] text-black sm:text-6xl lg:text-7xl">Visual documentation crafted to feel cinematic, refined, and portfolio-ready.</h2>
-              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-black/55 sm:text-lg">We capture brand moments, events, and behind-the-scenes stories with a presentation style that feels intentional on every scroll.</p>
+              <h2 className="mt-4 font-display text-5xl leading-[0.94] text-black sm:text-6xl lg:text-7xl">Visual documentation crafted to feel cinematic, refined, and ready to publish.</h2>
+              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-black/55 sm:text-lg">We capture wedding moments, brand stories, and behind-the-scenes details with a presentation style that feels intentional on every scroll.</p>
             </div>
           </div>
 
@@ -130,7 +130,7 @@ function DesktopColumn({ images, y }: DesktopColumnProps) {
       {images.map((src, index) => (
         <div key={`${src}-${index}`} className="relative h-full w-full overflow-hidden rounded-[1.75rem]">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={src} alt="Documentation image" className="pointer-events-none h-full w-full object-cover" />
+          <img src={src} alt="SIRUNTU visual documentation" className="pointer-events-none h-full w-full object-cover" />
         </div>
       ))}
     </motion.div>

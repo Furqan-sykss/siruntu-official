@@ -17,23 +17,63 @@ import SiruntuMark from "@/components/marks/SiruntuMark";
 const projects = [
   {
     title: "Wedding of Egia & Adam",
-    category: "Wedding Film",
+    category: "Wedding Documentation",
     venue: "Tuscan Dreams, Jakarta Selatan",
+    summary: "A soft, floral wedding story captured with Palm Wedding Organizer for an elegant Jakarta celebration.",
+    previewLabel: "Ceremony highlight",
+    detailTag: "Full wedding package",
+    intro:
+      "Egia and Adam's wedding was documented as an intimate celebration with a clean romantic tone, lush white florals, and a calm editorial rhythm. The visual direction focused on preserving the atmosphere of the venue while keeping every key moment personal and sincere.",
+    approach:
+      "Our coverage balanced emotional close-ups, ceremonial details, and venue ambience so the final story could feel polished across reels, highlight edits, and portfolio presentation.",
+    highlights: ["Venue coverage", "Couple moments", "Floral details", "Ceremony storytelling"],
+    closing:
+      "Created in collaboration with Palm Wedding Organizer, this project reflects SIRUNTU's approach to wedding documentation: graceful, attentive, and built around the feeling of the day.",
   },
   {
     title: "Wedding of Caca & Andy",
-    category: "Wedding Film",
+    category: "Wedding Documentation",
     venue: "Club House, Cibubur",
+    summary: "A warm Cibubur wedding documented through ceremony moments, reception details, and family atmosphere.",
+    previewLabel: "Reception story",
+    detailTag: "Wedding organizer collaboration",
+    intro:
+      "Caca and Andy's wedding brought together a heartfelt ceremony, refined decor, and a warm guest experience at Club House Cibubur. The documentation was shaped to feel natural, respectful, and memorable from the opening moments through the reception.",
+    approach:
+      "We focused on steady coverage, thoughtful framing, and a narrative flow that helps the couple and organizer revisit the day with clarity and emotion.",
+    highlights: ["Ceremony coverage", "Guest atmosphere", "Decor details", "Reception moments"],
+    closing:
+      "This collaboration with Palm Wedding Organizer shows how SIRUNTU supports wedding teams with visual documentation that is both useful for promotion and meaningful for the couple.",
   },
   {
-    title: "KENIYORU",
+    title: "KENIYORU Skincare Brand",
     category: "Brand & Social Media",
     venue: "Skincare Brand",
+    summary: "A brand handling project for KENIYORU, covering social media direction, feed content, and visual identity.",
+    previewLabel: "Brand case study",
+    detailTag: "Content strategy",
+    intro:
+      "KENIYORU trusted SIRUNTU to help shape their skincare brand presence across social media. The work included visual direction, feed planning, content ideas, and brand communication that could make the account feel clearer, more consistent, and more memorable.",
+    approach:
+      "The strategy combined product-focused visuals, educational skincare content, and social-first storytelling for Instagram, reels, and future short-form content.",
+    highlights: ["Social media strategy", "Feed planning", "Product storytelling", "Brand consistency"],
+    closing:
+      "The project reflects SIRUNTU's creative exploration in the brand space: building a distinct presence while keeping the content practical for daily social media growth.",
   },
   {
-    title: "Studio Session",
+    title: "SIRUNTU Creative Exploration",
     category: "Creative Direction",
-    venue: "Behind the Scenes",
+    venue: "Studio & Social Media Strategy",
+    summary: "A self-introduction concept presenting SIRUNTU as creative kinetic collaborators for brands and stories.",
+    previewLabel: "Exploration deck",
+    detailTag: "Creative introduction",
+    intro:
+      "The Creative Exploration series introduced SIRUNTU as a team ready to assist businesses with social media strategy, visual development, and brand storytelling. It framed the studio as a collaborative partner for Instagram feeds, reels, TikTok, and broader brand communication.",
+    approach:
+      "The content used a clean monochrome studio language, bold typography, and concise copy to communicate what SIRUNTU does without overcomplicating the message.",
+    highlights: ["Brand introduction", "Social media planning", "Creative direction", "Visual exploration"],
+    closing:
+      "This internal project sets the tone for SIRUNTU's portfolio: strategic enough for brands, expressive enough for creative work, and flexible enough for future collaborations.",
   },
 ];
 
@@ -53,7 +93,7 @@ function ProjectCard({
   total,
   title,
   category,
-  venue,
+  summary,
   onOpen,
   progress,
   range,
@@ -63,7 +103,7 @@ function ProjectCard({
   total: number;
   title: string;
   category: string;
-  venue: string;
+  summary: string;
   onOpen: () => void;
   progress: MotionValue<number>;
   range: [number, number];
@@ -83,7 +123,7 @@ function ProjectCard({
       <motion.div
         role="button"
         tabIndex={0}
-        aria-label={`Buka detail ${title}`}
+        aria-label={`Open details for ${title}`}
         onClick={onOpen}
         onKeyDown={openFromKeyboard}
         style={{ scale, top: `${i * 10}px` }}
@@ -105,7 +145,7 @@ function ProjectCard({
         <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-2 p-4 sm:p-6">
           <div>
             <h3 className="font-display text-lg text-text sm:text-2xl lg:text-3xl">{title}</h3>
-            <p className="mt-1 font-sans text-xs text-text-muted sm:text-sm">{venue}</p>
+            <p className="mt-1 font-sans text-xs text-text-muted sm:text-sm">{summary}</p>
           </div>
           <span className="shrink-0 rounded-full border border-gold/40 px-3 py-1 font-sans text-[10px] uppercase tracking-[0.15em] text-gold sm:text-[11px]">{category}</span>
         </div>
@@ -158,7 +198,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
       role="dialog"
       aria-labelledby="work-modal-title"
     >
-      <button className="absolute inset-0 cursor-default bg-bg/72" aria-label="Tutup detail proyek" onClick={onClose} />
+      <button className="absolute inset-0 cursor-default bg-bg/72" aria-label="Close project details" onClick={onClose} />
 
       <motion.div
         ref={panelScrollRef}
@@ -185,7 +225,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             <div className="flex items-center justify-between gap-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/75 px-3 py-1.5 font-sans text-[10px] uppercase tracking-[0.16em] text-text-muted">
                 <Images size={14} aria-hidden="true" />
-                Future carousel
+                {project.previewLabel}
               </span>
               <span className="h-3 w-3 border-r border-t border-gold/60" />
             </div>
@@ -196,13 +236,13 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   <Play size={20} fill="currentColor" aria-hidden="true" />
                 </span>
                 <p className="mt-5 font-display text-2xl text-text sm:text-3xl">{project.title}</p>
-                <p className="mt-3 font-sans text-xs uppercase tracking-[0.18em] text-text-muted">Documentation preview</p>
+                <p className="mt-3 font-sans text-xs uppercase tracking-[0.18em] text-text-muted">{project.category}</p>
               </div>
             </div>
 
             <div className="flex items-end justify-between gap-4 font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted">
               <span>01 / 05</span>
-              <span>Swipe ready</span>
+              <span>Portfolio ready</span>
             </div>
           </div>
         </div>
@@ -229,7 +269,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   type="button"
                   onClick={onClose}
                   className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-line text-text-muted transition-colors duration-300 hover:border-gold/50 hover:text-text focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/35"
-                  aria-label="Tutup modal"
+                  aria-label="Close modal"
                 >
                   <X size={18} aria-hidden="true" />
                 </button>
@@ -240,40 +280,34 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                   <MapPin size={14} aria-hidden="true" />
                   {project.venue}
                 </span>
-                <span className="inline-flex rounded-full border border-line px-3 py-2">Placeholder details</span>
+                <span className="inline-flex rounded-full border border-line px-3 py-2">{project.detailTag}</span>
               </div>
 
               <div className="mt-8 space-y-7 font-sans text-sm leading-7 text-text-muted sm:text-base sm:leading-8">
                 <p>
-                  Placeholder copy untuk ringkasan proyek. Bagian ini nantinya bisa diisi dengan cerita konsep, kebutuhan klien, pendekatan produksi, dan hasil akhir yang ingin ditonjolkan.
+                  {project.intro}
                 </p>
                 <p>
-                  Layout modal sudah disiapkan agar dokumentasi visual berada di sisi kiri pada layar besar, sementara sisi kanan menjadi area baca yang dapat discroll secara mandiri.
+                  {project.approach}
                 </p>
               </div>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
-                {["Concept direction", "Production notes", "Visual treatment", "Delivery format"].map((item) => (
+                {project.highlights.map((item) => (
                   <div key={item} className="rounded-xl border border-line bg-bg/45 p-4">
                     <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-gold">{item}</p>
                     <p className="mt-3 font-sans text-sm leading-6 text-text-muted">
-                      Placeholder untuk detail singkat yang bisa diganti dengan konten proyek sebenarnya.
+                      Planned and documented with attention to pacing, visual consistency, and the final audience experience.
                     </p>
                   </div>
                 ))}
               </div>
 
               <div className="mt-10 rounded-xl border border-line bg-bg/45 p-5">
-                <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-gold">Next content block</p>
+                <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-gold">Project note</p>
                 <div className="mt-5 space-y-4 font-sans text-sm leading-7 text-text-muted">
                   <p>
-                    Area tambahan ini sengaja dibuat cukup panjang untuk menguji scroll modal. Pada desktop dan laptop, hanya kolom kanan yang bergerak saat konten melampaui tinggi modal.
-                  </p>
-                  <p>
-                    Pada tablet dan mobile, modal berubah menjadi alur vertikal sehingga pengguna bisa membaca dan menelusuri seluruh isi dengan scroll natural dari atas ke bawah.
-                  </p>
-                  <p>
-                    Placeholder ini juga dapat diganti menjadi daftar deliverables, timeline, testimoni, atau rincian teknis produksi tanpa perlu mengubah struktur utama modal.
+                    {project.closing}
                   </p>
                 </div>
               </div>
@@ -303,15 +337,15 @@ export default function Works() {
                 <span className="w-6 text-text">
                   <SiruntuMark animate={false} />
                 </span>
-                <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">Karya Terpilih</span>
+                <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">Selected Work</span>
               </div>
               <p className="mt-6 max-w-2xl font-display text-2xl text-text sm:text-3xl xl:text-5xl xl:leading-[1.02]">
-                Sebagian proyek yang pernah kami kerjakan.
+                A closer look at the stories, brands, and celebrations we have shaped.
               </p>
               <p className="mt-6 max-w-sm font-sans text-sm leading-7 text-text-muted sm:text-base">
-                Placeholder copy: kami membangun dokumentasi visual yang rapi,
-                sinematik, dan terasa premium agar setiap proyek tampil kuat saat
-                dipresentasikan ke calon klien.
+                From wedding moments with Palm Wedding Organizer to social media
+                direction for KENIYORU, each project is built with clear visual
+                intent and a story-first point of view.
               </p>
               <div className="mt-8 hidden xl:block">
                 <span className="inline-flex rounded-full border border-line px-4 py-2 font-sans text-[11px] uppercase tracking-[0.16em] text-gold">

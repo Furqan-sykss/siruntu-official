@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, animate, motion, useMotionValue } from "framer-motion";
 import SiruntuMark from "@/components/marks/SiruntuMark";
 
-const WORDS = ["Menjelajah", "Merekam Momen", "Meracik Visual", "Berkolaborasi"];
+const WORDS = ["Explore", "Capture", "Shape", "Collaborate"];
 const BRAND = "SIRUNTU'";
 const TAGLINE = "Experience the Power of Creative Exploration";
 
@@ -112,7 +112,7 @@ export default function Preloader({
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden bg-bg"
           role="status"
           aria-live="polite"
-          aria-label="Memuat SIRUNTU' Creative Exploration"
+          aria-label="Loading SIRUNTU' Creative Exploration"
         >
           {/* faint corner framing — echoes the print-invitation feel of their wedding work */}
           <div className="pointer-events-none absolute inset-4 border border-line/60 sm:inset-6" />

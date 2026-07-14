@@ -33,23 +33,23 @@ const fadeUp: Variants = {
 const steps = [
   {
     n: "01",
-    title: "Menjelajah",
-    desc: "Memahami visi, karakter, dan cerita di balik setiap klien sebelum kamera menyala.",
+    title: "Explore",
+    desc: "We study the story, audience, tone, and visual direction before the first frame is captured.",
   },
   {
     n: "02",
-    title: "Merekam Momen",
-    desc: "Turun langsung ke lapangan — dari prosesi pernikahan hingga sesi konten brand.",
+    title: "Capture",
+    desc: "We document real moments on location, from wedding ceremonies to brand and product sessions.",
   },
   {
     n: "03",
-    title: "Meracik Visual",
-    desc: "Proses edit, color grading, dan penyusunan cerita di ruang pasca-produksi.",
+    title: "Shape",
+    desc: "We refine the work through editing, color, pacing, and layout so every story feels intentional.",
   },
   {
     n: "04",
-    title: "Berkolaborasi",
-    desc: "Revisi bersama klien hingga hasil akhir terasa personal dan tepat sasaran.",
+    title: "Collaborate",
+    desc: "We keep the process clear through feedback and revisions until the result feels aligned and ready to publish.",
   },
 ];
 
@@ -74,7 +74,7 @@ export default function About() {
             <SiruntuMark animate={false} />
           </span>
           <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">
-            Tentang Kami
+            About Us
           </span>
         </motion.div>
 
@@ -82,10 +82,10 @@ export default function About() {
           variants={fadeUp}
           className="mt-8 max-w-4xl font-display text-2xl leading-snug text-text sm:text-3xl lg:text-4xl"
         >
-          SIRUNTU&rsquo; Creative Exploration lahir dari niat sederhana:{" "}
+          SIRUNTU&rsquo; Creative Exploration was built around one simple belief:{" "}
           <span className="italic text-gold-soft">
-            mengabadikan momen dan membangun brand dengan cara yang jujur,
-            personal, dan penuh eksplorasi.
+            meaningful visuals can help moments last longer and brands speak
+            with more confidence.
           </span>
         </motion.p>
 
@@ -94,16 +94,14 @@ export default function About() {
           className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:max-w-3xl"
         >
           <p className="font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-            Digerakkan oleh tim inti yang ramping dan jaringan kolaborator
-            lepas, kami mengerjakan setiap proyek dengan perhatian personal —
-            mulai dari film pernikahan hingga strategi konten sosial media
-            brand.
+            We are a compact creative team supported by trusted collaborators,
+            working across wedding documentation, brand content, social media
+            strategy, and visual direction with a hands-on approach.
           </p>
           <p className="font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-            Berbasis di Aceh, perjalanan kami telah membawa kami
-            mendokumentasikan momen spesial hingga ke Jakarta, serta
-            dipercaya mengelola identitas visual dan media sosial beberapa
-            brand.
+            Based in Aceh and working beyond our home city, our portfolio
+            includes wedding projects in Jakarta, social media handling for
+            KENIYORU, and creative exploration content for SIRUNTU itself.
           </p>
         </motion.div>
 
@@ -112,7 +110,7 @@ export default function About() {
           className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 lg:mt-12"
         >
           <span className="font-sans text-[11px] uppercase tracking-[0.25em] text-text-muted">
-            Telah dipercaya oleh
+            Trusted By
           </span>
           {collaborators.map((c, i) => (
             <span key={c} className="flex items-center gap-3">

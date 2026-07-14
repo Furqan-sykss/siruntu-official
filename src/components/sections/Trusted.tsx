@@ -59,7 +59,7 @@ export default function Trusted() {
     <section className="relative overflow-hidden bg-bg py-16 sm:py-20">
       <div className="mx-auto mb-10 max-w-6xl px-6 sm:px-10 lg:px-16">
         <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">
-          Dipercaya Oleh
+          Trusted By
         </span>
       </div>
 

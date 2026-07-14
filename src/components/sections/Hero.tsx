@@ -165,31 +165,31 @@ export default function Hero({ ready }: { ready: boolean }) {
           <h1 className="font-display leading-[1.02] text-text">
             <span className="block overflow-hidden">
               <motion.span variants={lineReveal} className="block text-[13vw] font-medium sm:text-6xl md:text-[clamp(3.4rem,5.6vw,4.8rem)] lg:text-7xl">
-                Kami Ciptakan
+                We Create
               </motion.span>
             </span>
             <span className="block overflow-hidden">
               <motion.span variants={lineReveal} className="block text-[15vw] italic text-gold-soft sm:text-7xl md:text-[clamp(4rem,6.4vw,5.4rem)] lg:text-8xl">
-                Cerita Visual
+                Visual Stories
               </motion.span>
             </span>
             <span className="block overflow-hidden">
               <motion.span variants={lineReveal} className="block text-[13vw] font-medium sm:text-6xl md:text-[clamp(3.4rem,5.6vw,4.8rem)] lg:text-7xl">
-                yang Berkesan
+                That Stay
               </motion.span>
             </span>
           </h1>
 
           <motion.p variants={fadeUp} className="max-w-[46ch] font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-            Agensi kreatif asal Lhokseumawe yang mengeksplorasi fotografi, videografi, dan konten brand — dari momen pernikahan hingga identitas visual bisnis Anda.
+            A creative team from Jakarta helping brands and celebrations grow through photography, video, social media content, and thoughtful visual exploration.
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 pt-2">
             <a href="#work" className="rounded-full bg-gold px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-bg transition-colors hover:bg-gold-soft sm:text-sm">
-              Lihat Karya Kami
+              View Our Work
             </a>
             <a href="#contact" className="rounded-full border border-line px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-text transition-colors hover:border-gold hover:text-gold sm:text-sm">
-              Hubungi Kami
+              Contact Us
             </a>
           </motion.div>
         </div>
@@ -239,7 +239,7 @@ export default function Hero({ ready }: { ready: boolean }) {
 
       {/* scroll cue */}
       <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ duration: 0.6, delay: 1.1 }} className="relative z-10 mx-auto mt-10 flex flex-col items-center gap-3 lg:mt-6">
-        <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-text-muted">Gulir ke bawah</span>
+        <span className="font-sans text-[10px] uppercase tracking-[0.3em] text-text-muted">Scroll Down</span>
         <motion.span animate={{ y: [0, 6, 0] }} transition={{ duration: 1.8, repeat: Infinity, ease: "easeInOut" }} className="h-10 w-px bg-gradient-to-b from-gold to-transparent" />
       </motion.div>
     </section>
