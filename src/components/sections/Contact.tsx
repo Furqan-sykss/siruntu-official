@@ -74,7 +74,7 @@ export default function Contact() {
         </motion.h2>
 
         <motion.p variants={fadeUp} className="mt-6 max-w-md font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-          Tell us about your wedding, brand, campaign, or creative project. We will help translate the idea into a clear visual direction.
+          Tell us about your wedding, brand, packaging, documentary, or creative project. We will help translate the idea into a polished visual direction.
         </motion.p>
 
         <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-4 lg:mt-12">

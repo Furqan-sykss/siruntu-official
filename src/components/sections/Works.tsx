@@ -16,64 +16,52 @@ import SiruntuMark from "@/components/marks/SiruntuMark";
 
 const projects = [
   {
-    title: "Wedding of Egia & Adam",
-    category: "Wedding Documentation",
-    venue: "Tuscan Dreams, Jakarta Selatan",
-    summary: "A soft, floral wedding story captured with Palm Wedding Organizer for an elegant Jakarta celebration.",
-    previewLabel: "Ceremony highlight",
-    detailTag: "Full wedding package",
-    intro:
-      "Egia and Adam's wedding was documented as an intimate celebration with a clean romantic tone, lush white florals, and a calm editorial rhythm. The visual direction focused on preserving the atmosphere of the venue while keeping every key moment personal and sincere.",
-    approach:
-      "Our coverage balanced emotional close-ups, ceremonial details, and venue ambience so the final story could feel polished across reels, highlight edits, and portfolio presentation.",
-    highlights: ["Venue coverage", "Couple moments", "Floral details", "Ceremony storytelling"],
-    closing:
-      "Created in collaboration with Palm Wedding Organizer, this project reflects SIRUNTU's approach to wedding documentation: graceful, attentive, and built around the feeling of the day.",
+    title: "Trip Surf Documentary",
+    category: "Long-term Documentary",
+    venue: "SEKARINGSRENGENGE Surf Trips",
+    summary: "Captured the ongoing women’s surf journey for Trip, documenting each SEKARINGSRENGENGE departure with thoughtful storytelling and edits.",
+    previewLabel: "Ongoing trip coverage",
+    detailTag: "Long-term documentation",
+    intro: "Trip partnered with SIRUNTU for a long-term documentary collaboration, chronicling every women-only SEKARINGSRENGENGE surf departure from departure to finale.",
+    approach: "The production combined travel documentation, surf storytelling, and editing that preserved the atmosphere, energy, and continuity of the series over time.",
+    highlights: ["Long-term documentation", "Surf storytelling", "Editorial editing", "Journey continuity"],
+    closing: "This ongoing collaboration demonstrates how SIRUNTU sustains a brand story over time, delivering consistent and evocative documentation for the Trip surf series.",
   },
   {
-    title: "Wedding of Caca & Andy",
-    category: "Wedding Documentation",
-    venue: "Club House, Cibubur",
-    summary: "A warm Cibubur wedding documented through ceremony moments, reception details, and family atmosphere.",
-    previewLabel: "Reception story",
-    detailTag: "Wedding organizer collaboration",
-    intro:
-      "Caca and Andy's wedding brought together a heartfelt ceremony, refined decor, and a warm guest experience at Club House Cibubur. The documentation was shaped to feel natural, respectful, and memorable from the opening moments through the reception.",
-    approach:
-      "We focused on steady coverage, thoughtful framing, and a narrative flow that helps the couple and organizer revisit the day with clarity and emotion.",
-    highlights: ["Ceremony coverage", "Guest atmosphere", "Decor details", "Reception moments"],
-    closing:
-      "This collaboration with Palm Wedding Organizer shows how SIRUNTU supports wedding teams with visual documentation that is both useful for promotion and meaningful for the couple.",
+    title: "WCC Wedding Content",
+    category: "Documentary & Editing",
+    venue: "Wedding Content Service",
+    summary: "Produced documentary wedding content and polished edits for WCC, serving personal clients and event organizer collaborations.",
+    previewLabel: "Story-led wedding content",
+    detailTag: "Documentary production",
+    intro: "WCC engaged SIRUNTU to capture weddings as documentary stories with thoughtful editing. The work supported couples directly as well as collaborations with wedding organizers and event planners.",
+    approach: "We focused on authentic storytelling, seamless coverage, and editing that turned each event into a cinematic, emotionally engaging narrative.",
+    highlights: ["Event documentation", "Wedding storytelling", "Collaborative editing", "Personal client work"],
+    closing: "This project illustrates SIRUNTU’s ability to deliver documentary-driven wedding content that feels both polished and genuinely personal.",
   },
   {
-    title: "KENIYORU Skincare Brand",
-    category: "Brand & Social Media",
-    venue: "Skincare Brand",
-    summary: "A brand handling project for KENIYORU, covering social media direction, feed content, and visual identity.",
-    previewLabel: "Brand case study",
-    detailTag: "Content strategy",
-    intro:
-      "KENIYORU trusted SIRUNTU to help shape their skincare brand presence across social media. The work included visual direction, feed planning, content ideas, and brand communication that could make the account feel clearer, more consistent, and more memorable.",
-    approach:
-      "The strategy combined product-focused visuals, educational skincare content, and social-first storytelling for Instagram, reels, and future short-form content.",
-    highlights: ["Social media strategy", "Feed planning", "Product storytelling", "Brand consistency"],
-    closing:
-      "The project reflects SIRUNTU's creative exploration in the brand space: building a distinct presence while keeping the content practical for daily social media growth.",
+    title: "Sealpak Packaging",
+    category: "Packaging & Social Media",
+    venue: "Food-grade Packaging",
+    summary: "Translated Sealpak’s food-safe packaging expertise into a stronger brand story and social media presence.",
+    previewLabel: "Packaging storytelling",
+    detailTag: "Brand and content management",
+    intro: "Sealpak worked with SIRUNTU to build a cohesive brand presence for its food-grade packaging business. We helped shape messaging, visuals, and content strategy that reflected the company's product reliability.",
+    approach: "Our approach centered on packaging storytelling, social media handling, and creating a consistent feed that communicated quality, safety, and professional expertise.",
+    highlights: ["Brand identity", "Social media handling", "Packaging content", "Feed consistency"],
+    closing: "The collaboration gave Sealpak a more confident and polished brand expression while ensuring its social media channels were managed end to end.",
   },
   {
-    title: "SIRUNTU Creative Exploration",
-    category: "Creative Direction",
-    venue: "Studio & Social Media Strategy",
-    summary: "A self-introduction concept presenting SIRUNTU as creative kinetic collaborators for brands and stories.",
-    previewLabel: "Exploration deck",
-    detailTag: "Creative introduction",
-    intro:
-      "The Creative Exploration series introduced SIRUNTU as a team ready to assist businesses with social media strategy, visual development, and brand storytelling. It framed the studio as a collaborative partner for Instagram feeds, reels, TikTok, and broader brand communication.",
-    approach:
-      "The content used a clean monochrome studio language, bold typography, and concise copy to communicate what SIRUNTU does without overcomplicating the message.",
-    highlights: ["Brand introduction", "Social media planning", "Creative direction", "Visual exploration"],
-    closing:
-      "This internal project sets the tone for SIRUNTU's portfolio: strategic enough for brands, expressive enough for creative work, and flexible enough for future collaborations.",
+    title: "ENIYORU Skincare",
+    category: "Brand Strategy",
+    venue: "Facial Serum Brand",
+    summary: "Shaped ENIYORU's brand image and social voice for its facial serum line with polished strategy and content direction.",
+    previewLabel: "Social media strategy",
+    detailTag: "End-to-end brand handling",
+    intro: "ENIYORU partnered with SIRUNTU to define a stronger skincare brand presence. Our work focused on brand analysis, visual direction, and building a consistent social media identity for the facial serum line.",
+    approach: "The project combined brand positioning, creative planning, and full social media management—from content concepts and visual storytelling to caption strategy and posting rhythm.",
+    highlights: ["Brand strategy", "Social media management", "Visual identity", "Brand analysis"],
+    closing: "This engagement positioned ENIYORU with a clearer brand image and a polished, consistent social presence across relevant platforms.",
   },
 ];
 
@@ -284,21 +272,15 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               </div>
 
               <div className="mt-8 space-y-7 font-sans text-sm leading-7 text-text-muted sm:text-base sm:leading-8">
-                <p>
-                  {project.intro}
-                </p>
-                <p>
-                  {project.approach}
-                </p>
+                <p>{project.intro}</p>
+                <p>{project.approach}</p>
               </div>
 
               <div className="mt-10 grid gap-3 sm:grid-cols-2">
                 {project.highlights.map((item) => (
                   <div key={item} className="rounded-xl border border-line bg-bg/45 p-4">
                     <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-gold">{item}</p>
-                    <p className="mt-3 font-sans text-sm leading-6 text-text-muted">
-                      Planned and documented with attention to pacing, visual consistency, and the final audience experience.
-                    </p>
+                    <p className="mt-3 font-sans text-sm leading-6 text-text-muted">Planned and documented with attention to pacing, visual consistency, and the final audience experience.</p>
                   </div>
                 ))}
               </div>
@@ -306,9 +288,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
               <div className="mt-10 rounded-xl border border-line bg-bg/45 p-5">
                 <p className="font-sans text-[11px] uppercase tracking-[0.18em] text-gold">Project note</p>
                 <div className="mt-5 space-y-4 font-sans text-sm leading-7 text-text-muted">
-                  <p>
-                    {project.closing}
-                  </p>
+                  <p>{project.closing}</p>
                 </div>
               </div>
             </div>
@@ -339,18 +319,12 @@ export default function Works() {
                 </span>
                 <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">Selected Work</span>
               </div>
-              <p className="mt-6 max-w-2xl font-display text-2xl text-text sm:text-3xl xl:text-5xl xl:leading-[1.02]">
-                A closer look at the stories, brands, and celebrations we have shaped.
-              </p>
+              <p className="mt-6 max-w-2xl font-display text-2xl text-text sm:text-3xl xl:text-5xl xl:leading-[1.02]">A closer look at the stories, brands, and celebrations we have shaped.</p>
               <p className="mt-6 max-w-sm font-sans text-sm leading-7 text-text-muted sm:text-base">
-                From wedding moments with Palm Wedding Organizer to social media
-                direction for KENIYORU, each project is built with clear visual
-                intent and a story-first point of view.
+                From skincare strategy to packaging narratives, wedding content, and ongoing documentary projects, each story is designed with clear visual intent and professional polish.
               </p>
               <div className="mt-8 hidden xl:block">
-                <span className="inline-flex rounded-full border border-line px-4 py-2 font-sans text-[11px] uppercase tracking-[0.16em] text-gold">
-                  Selected stories
-                </span>
+                <span className="inline-flex rounded-full border border-line px-4 py-2 font-sans text-[11px] uppercase tracking-[0.16em] text-gold">Selected stories</span>
               </div>
             </div>
           </motion.div>
@@ -358,23 +332,12 @@ export default function Works() {
 
         <div ref={container} className="relative mx-auto w-full min-w-0 max-w-4xl pb-[14vh] sm:pb-[18vh] lg:pb-[22vh] xl:max-w-none xl:pb-[14vh]">
           {projects.map((p, i) => (
-            <ProjectCard
-              key={p.title}
-              i={i}
-              total={projects.length}
-              {...p}
-              onOpen={() => setActiveProject(p)}
-              progress={scrollYProgress}
-              range={[i / projects.length, 1]}
-              targetScale={Math.max(0.85, 1 - (projects.length - i - 1) * 0.05)}
-            />
+            <ProjectCard key={p.title} i={i} total={projects.length} {...p} onOpen={() => setActiveProject(p)} progress={scrollYProgress} range={[i / projects.length, 1]} targetScale={Math.max(0.85, 1 - (projects.length - i - 1) * 0.05)} />
           ))}
         </div>
       </div>
 
-      <AnimatePresence>
-        {activeProject ? <ProjectModal key={activeProject.title} project={activeProject} onClose={() => setActiveProject(null)} /> : null}
-      </AnimatePresence>
+      <AnimatePresence>{activeProject ? <ProjectModal key={activeProject.title} project={activeProject} onClose={() => setActiveProject(null)} /> : null}</AnimatePresence>
     </section>
   );
 }

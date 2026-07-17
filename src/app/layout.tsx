@@ -4,8 +4,7 @@ import SmoothScrollProvider from "@/components/SmoothScrollProvider";
 
 export const metadata: Metadata = {
   title: "SIRUNTU' — Creative Exploration",
-  description:
-    "SIRUNTU' Creative Exploration is a creative team for wedding documentation, brand content, social media strategy, and visual storytelling.",
+  description: "SIRUNTU' Creative Exploration is a creative team for wedding documentation, brand strategy, packaging storytelling, and long-form documentary work.",
 };
 
 export default function RootLayout({

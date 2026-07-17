@@ -6,8 +6,8 @@ import SiruntuMark from "@/components/marks/SiruntuMark";
 /**
  * Services — white section (alternating rhythm: navy Works → white Services).
  * The three services intentionally mirror the three category labels shown
- * in the Hero collage placeholders (Wedding Film, Brand Content, Creative
- * Direction), so a visitor who scrolled past Hero recognizes the thread
+ * in the Hero collage placeholders (Wedding Film, Brand Content, Documentary
+ * Stories), so a visitor who scrolled past Hero recognizes the thread
  * instead of meeting a fresh, disconnected list.
  */
 
@@ -15,20 +15,20 @@ const services = [
   {
     n: "01",
     title: "Wedding Documentation",
-    desc: "Photo and video coverage for wedding days, built around emotion, ceremony details, venue atmosphere, and a cinematic final story.",
+    desc: "Documentary coverage for weddings, crafted around ceremony emotion, venue atmosphere, and cinematic storytelling.",
     tags: ["Wedding Film", "Event Coverage", "Highlight Edit"],
   },
   {
     n: "02",
     title: "Brand & Social Media",
-    desc: "Content strategy and visual handling for Instagram feeds, reels, TikTok, and brand communication that stays consistent over time.",
-    tags: ["Content Strategy", "Feed & Reels", "TikTok"],
+    desc: "Brand strategy and social media content for skincare, packaging, and lifestyle brands that need a confident, consistent visual identity.",
+    tags: ["Content Strategy", "Feed Planning", "Packaging Storytelling"],
   },
   {
     n: "03",
     title: "Creative Direction",
-    desc: "Concept development, product visuals, studio direction, and campaign ideas for brands that need a clearer visual presence.",
-    tags: ["Product Visuals", "Studio Session", "Concept Development"],
+    desc: "Long-form storytelling, campaign ideas, and visual concept development for projects that require clarity, cohesion, and emotional resonance.",
+    tags: ["Visual Strategy", "Editorial Direction", "Concept Development"],
   },
 ];
 

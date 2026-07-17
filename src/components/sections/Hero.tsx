@@ -66,7 +66,7 @@ const frameCategories = [
     image: "/img/IMG-20240314-WA0048.jpeg",
   },
   {
-    label: "Creative Direction",
+    label: "Documentary Stories",
     ratio: "aspect-[4/3] md:aspect-[1.05/1]",
     area: "",
     image: "/img/IMG-20240315-WA0038.jpeg",
@@ -181,7 +181,7 @@ export default function Hero({ ready }: { ready: boolean }) {
           </h1>
 
           <motion.p variants={fadeUp} className="max-w-[46ch] font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-            A creative team from Jakarta helping brands and celebrations grow through photography, video, social media content, and thoughtful visual exploration.
+            A creative team from Jakarta helping brands, celebrations, and story-driven projects grow through photography, video, social media, and thoughtful visual storytelling.
           </motion.p>
 
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4 pt-2">
