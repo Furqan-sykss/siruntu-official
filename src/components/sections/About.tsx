@@ -54,48 +54,58 @@ const steps = [
 ];
 
 // Real, verified collaborations only — no invented client names or numbers.
-const collaborators = ["ENIYORU", "Sealpak", "Palm Wedding Organizer", "Trip"];
+const collaborators = ["Sekaringsrengenge (Trip Surf collaboration)", "Palm Wedding Organizer (WCC Wedding Content)", "Sealpak Packaging (PT. Datindo Image Werks)", "KENIYORU Skincare"];
 
 export default function About() {
   return (
-    <section id="about" className="section-pink relative px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
-      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mx-auto max-w-6xl">
+    <section id="about" className="section-pink relative isolate overflow-hidden px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.22]"
+        style={{
+          backgroundImage: "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
+          backgroundSize: "clamp(38px, 6vw, 78px) clamp(38px, 6vw, 78px)",
+        }}
+      />
+      <div className="pointer-events-none absolute -right-16 top-16 h-52 w-52 border-2 border-gold/25 bg-surface/45 sm:h-72 sm:w-72" />
+
+      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="relative mx-auto max-w-6xl">
         <motion.div variants={fadeUp} className="flex items-center gap-3">
-          <span className="w-6 text-text">
+          <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
             <SiruntuMark animate={false} />
           </span>
-          <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">About Us</span>
+          <span className="border-2 border-line bg-bg/45 px-3 py-2 font-sans text-[11px] font-black uppercase tracking-[0.24em] text-gold-soft">About Us</span>
         </motion.div>
 
-        <motion.p variants={fadeUp} className="mt-8 max-w-4xl font-display text-2xl leading-snug text-text sm:text-3xl lg:text-4xl">
+        <motion.p variants={fadeUp} className="mt-8 max-w-4xl border-2 border-text bg-bg/40 p-5 font-display text-[2rem] leading-[1.08] text-text shadow-[8px_8px_0_var(--gold)] sm:p-7 sm:text-3xl lg:text-4xl">
           SIRUNTU&rsquo; Creative Exploration was built around one simple belief: <span className="italic text-gold-soft">meaningful visuals can help moments last longer and brands speak with more confidence.</span>
         </motion.p>
 
-        <motion.div variants={fadeUp} className="mt-10 grid gap-6 sm:grid-cols-2 lg:mt-14 lg:max-w-3xl">
+        <motion.div variants={fadeUp} className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:max-w-3xl">
           <p className="font-sans text-sm leading-relaxed text-text-muted sm:text-base">
             We are a compact creative team supported by trusted collaborators, working across wedding documentation, brand and packaging content, social media strategy, and long-form documentary storytelling.
           </p>
           <p className="font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-            Based in Aceh and working beyond our home city, our portfolio spans skincare branding for ENIYORU, food-grade packaging storytelling for Sealpak, wedding content productions, and ongoing documentary projects.
+            Based in Jakarta, Indonesia, our portfolio spans skincare branding for KENIYORU, food-grade packaging storytelling for Sealpak Packaging (PT. Datindo Image Werks), wedding content productions, and ongoing documentary
+            collaborations.
           </p>
         </motion.div>
 
-        <motion.div variants={fadeUp} className="mt-10 flex flex-wrap items-center gap-x-3 gap-y-2 lg:mt-12">
-          <span className="font-sans text-[11px] uppercase tracking-[0.25em] text-text-muted">Trusted By</span>
+        <motion.div variants={fadeUp} className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-3 border-2 border-line bg-surface/55 px-4 py-3 sm:mt-10 lg:mt-12">
+          <span className="font-sans text-[10px] font-black uppercase tracking-[0.25em] text-text-muted sm:text-[11px]">Trusted By</span>
           {collaborators.map((c, i) => (
-            <span key={c} className="flex items-center gap-3">
-              {i > 0 && <span className="h-1 w-1 rounded-full bg-gold/60" aria-hidden="true" />}
-              <span className="font-sans text-xs uppercase tracking-[0.15em] text-text sm:text-sm">{c}</span>
+            <span key={c} className="flex items-center gap-2 sm:gap-3">
+              {i > 0 && <span className="h-1 w-5 bg-gold/60" aria-hidden="true" />}
+              <span className="font-sans text-[10px] uppercase tracking-[0.12em] text-text sm:text-xs sm:tracking-[0.15em] lg:text-sm">{c}</span>
             </span>
           ))}
         </motion.div>
 
-        <div className="mt-16 grid gap-x-8 gap-y-10 border-t border-line pt-12 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4 lg:pt-14">
+        <div className="mt-14 grid gap-4 sm:mt-16 sm:grid-cols-2 lg:mt-20 lg:grid-cols-4">
           {steps.map((s) => (
-            <motion.div key={s.n} variants={fadeUp} className="flex flex-col gap-3">
+            <motion.div key={s.n} variants={fadeUp} className="flex min-h-56 flex-col gap-3 border-2 border-line bg-surface/58 p-5 shadow-[5px_5px_0_rgba(23,27,44,0.12)]">
               <span className="font-display text-sm text-gold">{s.n}</span>
               <h3 className="font-display text-xl text-text sm:text-2xl">{s.title}</h3>
-              <p className="font-sans text-sm leading-relaxed text-text-muted">{s.desc}</p>
+              <p className="font-sans text-sm leading-relaxed text-text-muted sm:text-[15px]">{s.desc}</p>
             </motion.div>
           ))}
         </div>

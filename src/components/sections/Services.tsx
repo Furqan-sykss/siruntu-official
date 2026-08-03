@@ -48,22 +48,30 @@ const fadeUp: Variants = {
 
 export default function Services() {
   return (
-    <section id="services" className="section-pink relative px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
-      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="mx-auto max-w-6xl">
+    <section id="services" className="section-white relative isolate overflow-hidden px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.2]"
+        style={{
+          backgroundImage: "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
+          backgroundSize: "clamp(38px, 6vw, 78px) clamp(38px, 6vw, 78px)",
+        }}
+      />
+
+      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="relative mx-auto max-w-6xl">
         <motion.div variants={fadeUp} className="flex items-center gap-3">
-          <span className="w-6 text-text">
+          <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
             <SiruntuMark animate={false} />
           </span>
-          <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">Services</span>
+          <span className="border-2 border-line bg-bg/70 px-3 py-2 font-sans text-[11px] font-black uppercase tracking-[0.24em] text-gold-soft">Services</span>
         </motion.div>
 
-        <motion.p variants={fadeUp} className="mt-8 max-w-2xl font-display text-2xl leading-snug text-text sm:text-3xl lg:text-4xl">
+        <motion.p variants={fadeUp} className="mt-8 max-w-2xl border-l-4 border-gold pl-5 font-display text-2xl leading-snug text-text sm:text-3xl lg:text-4xl">
           Three focused ways we help moments, brands, and ideas become publish-ready visual stories.
         </motion.p>
 
-        <div className="mt-14 border-t border-line lg:mt-16">
+        <div className="mt-14 border-2 border-text bg-bg shadow-[8px_8px_0_var(--gold)] lg:mt-16">
           {services.map((s) => (
-            <motion.div key={s.n} variants={fadeUp} className="grid gap-4 border-b border-line py-8 sm:grid-cols-12 sm:items-start sm:gap-6 sm:py-10">
+            <motion.div key={s.n} variants={fadeUp} className="grid gap-4 border-b-2 border-line p-5 last:border-b-0 sm:grid-cols-12 sm:items-start sm:gap-6 sm:p-7 lg:p-8">
               <div className="sm:col-span-2">
                 <span className="font-display text-sm text-gold">{s.n}</span>
               </div>
@@ -72,7 +80,7 @@ export default function Services() {
                 <p className="max-w-md font-sans text-sm leading-relaxed text-text-muted sm:text-base">{s.desc}</p>
                 <div className="mt-4 flex flex-wrap gap-2">
                   {s.tags.map((t) => (
-                    <span key={t} className="rounded-full border border-line px-3 py-1 font-sans text-[11px] uppercase tracking-[0.1em] text-text-muted">
+                    <span key={t} className="border-2 border-line bg-surface px-3 py-1 font-sans text-[11px] font-black uppercase tracking-[0.1em] text-text-muted">
                       {t}
                     </span>
                   ))}
@@ -84,7 +92,7 @@ export default function Services() {
 
         <motion.div variants={fadeUp} className="mt-14 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between lg:mt-16">
           <p className="font-display text-xl italic text-gold-soft sm:text-2xl">Have a project in mind?</p>
-          <a href="#contact" className="rounded-full bg-gold px-6 py-3 font-sans text-xs font-semibold uppercase tracking-[0.15em] text-bg transition-colors hover:bg-gold-soft sm:text-sm">
+          <a href="#contact" className="border-2 border-text bg-gold px-6 py-3 font-sans text-xs font-black uppercase tracking-[0.15em] text-bg shadow-[5px_5px_0_var(--text)] transition duration-300 hover:-translate-y-0.5 hover:bg-gold-soft sm:text-sm">
             Contact Us
           </a>
         </motion.div>

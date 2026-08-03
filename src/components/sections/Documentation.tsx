@@ -5,6 +5,7 @@ import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { Autoplay, EffectCards, Navigation, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import SiruntuMark from "@/components/marks/SiruntuMark";
 import "swiper/css";
 import "swiper/css/effect-cards";
 import "swiper/css/navigation";
@@ -84,26 +85,54 @@ export default function Documentation() {
   return (
     <section id="documentation" className="section-white relative overflow-hidden">
       {isMobile ? (
-        <div className="bg-[#f5f4f3] px-6 pb-12 pt-20">
-          <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs uppercase tracking-[0.32em] text-[#b85d89]">Documentation</p>
-            <h2 className="mt-4 font-display text-4xl leading-none text-[#171b2c] sm:text-5xl">Every project deserves a visual story that feels polished, human, and alive.</h2>
-            <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#6b7290] sm:text-base">
+        <div className="relative isolate px-6 pb-12 pt-20">
+          <div
+            className="pointer-events-none absolute inset-0 opacity-[0.18]"
+            style={{
+              backgroundImage: "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
+              backgroundSize: "44px 44px",
+            }}
+          />
+          <div className="relative mx-auto max-w-3xl">
+            <div className="flex items-center gap-3">
+              <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
+                <SiruntuMark animate={false} />
+              </span>
+              <span className="border-2 border-line bg-bg/70 px-3 py-2 font-sans text-[11px] font-black uppercase tracking-[0.24em] text-gold-soft">Documentation</span>
+            </div>
+            <h2 className="mt-7 border-2 border-text bg-bg/70 p-5 font-display text-4xl leading-[0.96] text-text shadow-[7px_7px_0_var(--gold)] sm:p-6 sm:text-5xl">
+              Every project deserves a visual story that feels <span className="italic text-gold-soft">polished, human, and alive.</span>
+            </h2>
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-text-muted sm:text-base">
               From wedding coverage to branded social media moments, we turn raw documentation into a clean, cinematic presentation that feels premium across every screen.
             </p>
           </div>
 
-          <div className="mt-12 flex w-full items-center justify-center overflow-hidden">
+          <div className="relative mt-12 flex w-full items-center justify-center overflow-hidden">
             <Carousel002 images={mobileImages} loop />
           </div>
         </div>
       ) : (
-        <div className="w-full bg-[#eee] text-black">
-          <div className="mx-auto flex min-h-[52vh] max-w-5xl items-center px-6 py-20 text-center sm:px-10 lg:px-12">
-            <div className="w-full">
-              <p className="text-xs uppercase tracking-[0.34em] text-black/45">Documentation</p>
-              <h2 className="mt-4 font-display text-5xl leading-[0.94] text-black sm:text-6xl lg:text-7xl">Visual documentation crafted to feel cinematic, refined, and ready to publish.</h2>
-              <p className="mx-auto mt-6 max-w-3xl text-base leading-8 text-black/55 sm:text-lg">We capture wedding moments, brand stories, and behind-the-scenes details with a presentation style that feels intentional on every scroll.</p>
+        <div className="w-full bg-bg text-text">
+          <div className="relative isolate mx-auto flex min-h-[52vh] max-w-6xl items-center px-6 py-20 sm:px-10 lg:px-12">
+            <div
+              className="pointer-events-none absolute inset-0 opacity-[0.16]"
+              style={{
+                backgroundImage: "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
+                backgroundSize: "clamp(42px, 6vw, 80px) clamp(42px, 6vw, 80px)",
+              }}
+            />
+            <div className="relative w-full">
+              <div className="flex items-center gap-3">
+                <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
+                  <SiruntuMark animate={false} />
+                </span>
+                <span className="border-2 border-line bg-bg/70 px-3 py-2 font-sans text-[11px] font-black uppercase tracking-[0.24em] text-gold-soft">Documentation</span>
+              </div>
+              <h2 className="mt-7 max-w-5xl border-2 border-text bg-bg/70 p-7 font-display text-5xl leading-[0.94] text-text shadow-[8px_8px_0_var(--gold)] sm:text-6xl lg:text-7xl">
+                Visual documentation crafted to feel <span className="italic text-gold-soft">cinematic, refined, and ready to publish.</span>
+              </h2>
+              <p className="mt-7 max-w-3xl text-base leading-8 text-text-muted sm:text-lg">We capture wedding moments, brand stories, and behind-the-scenes details with a presentation style that feels intentional on every scroll.</p>
             </div>
           </div>
 

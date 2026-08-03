@@ -18,14 +18,14 @@ const projects = [
   {
     title: "Trip Surf Documentary",
     category: "Long-term Documentary",
-    venue: "SEKARINGSRENGENGE Surf Trips",
-    summary: "Captured the ongoing women’s surf journey for Trip, documenting each SEKARINGSRENGENGE departure with thoughtful storytelling and edits.",
+    venue: "Sekaringsrengenge Surf Trips",
+    summary: "Captured the ongoing women’s surf journey for Sekaringsrengenge, documenting each departure with thoughtful storytelling and editorial continuity.",
     previewLabel: "Ongoing trip coverage",
     detailTag: "Long-term documentation",
-    intro: "Trip partnered with SIRUNTU for a long-term documentary collaboration, chronicling every women-only SEKARINGSRENGENGE surf departure from departure to finale.",
+    intro: "Sekaringsrengenge partnered with SIRUNTU for a long-term documentary collaboration, chronicling every women-only surf departure from departure to finale.",
     approach: "The production combined travel documentation, surf storytelling, and editing that preserved the atmosphere, energy, and continuity of the series over time.",
     highlights: ["Long-term documentation", "Surf storytelling", "Editorial editing", "Journey continuity"],
-    closing: "This ongoing collaboration demonstrates how SIRUNTU sustains a brand story over time, delivering consistent and evocative documentation for the Trip surf series.",
+    closing: "This ongoing collaboration demonstrates how SIRUNTU sustains a brand story over time, delivering consistent and evocative documentation for the Sekaringsrengenge surf series.",
   },
   {
     title: "WCC Wedding Content",
@@ -52,16 +52,16 @@ const projects = [
     closing: "The collaboration gave Sealpak a more confident and polished brand expression while ensuring its social media channels were managed end to end.",
   },
   {
-    title: "ENIYORU Skincare",
+    title: "KENIYORU Skincare",
     category: "Brand Strategy",
     venue: "Facial Serum Brand",
-    summary: "Shaped ENIYORU's brand image and social voice for its facial serum line with polished strategy and content direction.",
+    summary: "Shaped KENIYORU's brand image and social voice for its facial serum line with polished strategy and content direction.",
     previewLabel: "Social media strategy",
     detailTag: "End-to-end brand handling",
-    intro: "ENIYORU partnered with SIRUNTU to define a stronger skincare brand presence. Our work focused on brand analysis, visual direction, and building a consistent social media identity for the facial serum line.",
+    intro: "KENIYORU partnered with SIRUNTU to define a stronger skincare brand presence. Our work focused on brand analysis, visual direction, and building a consistent social media identity for the facial serum line.",
     approach: "The project combined brand positioning, creative planning, and full social media management—from content concepts and visual storytelling to caption strategy and posting rhythm.",
     highlights: ["Brand strategy", "Social media management", "Visual identity", "Brand analysis"],
-    closing: "This engagement positioned ENIYORU with a clearer brand image and a polished, consistent social presence across relevant platforms.",
+    closing: "This engagement positioned KENIYORU with a clearer brand image and a polished, consistent social presence across relevant platforms.",
   },
 ];
 
@@ -308,23 +308,32 @@ export default function Works() {
   });
 
   return (
-    <section id="work" className="relative bg-bg px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
-      <div className="mx-auto max-w-7xl xl:grid xl:grid-cols-[minmax(280px,30%)_minmax(0,70%)] xl:gap-12">
-        <div className="mb-14 max-w-6xl lg:mb-16 xl:sticky xl:top-[22vh] xl:mb-0 xl:self-start">
-          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={fadeUp} className="xl:flex xl:min-h-[56vh] xl:items-center">
-            <div className="max-w-md">
+    <section id="work" className="section-surface relative isolate px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage: "linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px)",
+          backgroundSize: "clamp(40px, 6vw, 80px) clamp(40px, 6vw, 80px)",
+        }}
+      />
+      <div className="relative mx-auto max-w-7xl xl:grid xl:grid-cols-[minmax(280px,30%)_minmax(0,70%)] xl:gap-12">
+        <div className="mb-14 max-w-6xl lg:mb-16 xl:sticky xl:top-20 xl:mb-0 xl:self-start">
+          <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={fadeUp}>
+            <div className="max-w-md xl:max-w-[24rem]">
               <div className="flex items-center gap-3">
-                <span className="w-6 text-text">
+                <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
                   <SiruntuMark animate={false} />
                 </span>
-                <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-text-muted">Selected Work</span>
+                <span className="border-2 border-line bg-bg/70 px-3 py-2 font-sans text-[11px] font-black uppercase tracking-[0.24em] text-gold-soft">Selected Work</span>
               </div>
-              <p className="mt-6 max-w-2xl font-display text-2xl text-text sm:text-3xl xl:text-5xl xl:leading-[1.02]">A closer look at the stories, brands, and celebrations we have shaped.</p>
-              <p className="mt-6 max-w-sm font-sans text-sm leading-7 text-text-muted sm:text-base">
+              <h2 className="mt-7 border-2 border-text bg-bg/70 p-5 font-display text-3xl leading-[1.02] text-text shadow-[7px_7px_0_var(--gold)] sm:text-4xl xl:p-4 xl:text-[2.65rem]">
+                A closer look at the stories, brands, and <span className="italic text-gold-soft">celebrations we have shaped.</span>
+              </h2>
+              <p className="mt-6 max-w-sm font-sans text-sm leading-7 text-text-muted sm:text-base xl:mt-5 xl:text-[15px] xl:leading-7">
                 From skincare strategy to packaging narratives, wedding content, and ongoing documentary projects, each story is designed with clear visual intent and professional polish.
               </p>
               <div className="mt-8 hidden xl:block">
-                <span className="inline-flex rounded-full border border-line px-4 py-2 font-sans text-[11px] uppercase tracking-[0.16em] text-gold">Selected stories</span>
+                <span className="inline-flex border-2 border-line bg-bg/60 px-4 py-2 font-sans text-[11px] font-black uppercase tracking-[0.16em] text-gold">Selected stories</span>
               </div>
             </div>
           </motion.div>
