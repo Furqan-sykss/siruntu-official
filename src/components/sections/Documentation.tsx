@@ -1,15 +1,9 @@
 "use client";
 
 import { motion, type MotionValue, useScroll, useSpring, useTransform } from "framer-motion";
-import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
-import { Autoplay, EffectCards, Navigation, Pagination } from "swiper/modules";
-import { Swiper, SwiperSlide } from "swiper/react";
 import SiruntuMark from "@/components/marks/SiruntuMark";
-import "swiper/css";
-import "swiper/css/effect-cards";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+import SiruntuWatermarks from "@/components/sections/SiruntuWatermarks";
 
 const desktopImages = [
   "/img/IMG-20240313-WA0000.jpg",
@@ -38,6 +32,38 @@ const mobileImages = [
   { src: "/img/IMG-20240313-WA0061.jpg", alt: "SIRUNTU wedding documentation moment 09" },
   { src: "/img/IMG-20240313-WA0063.jpg", alt: "SIRUNTU wedding documentation moment 10" },
   { src: "/img/IMG-20240313-WA0064.jpeg", alt: "SIRUNTU wedding documentation moment 11" },
+  { src: "/img/IMG-20240313-WA0068.jpg", alt: "SIRUNTU wedding documentation moment 12" },
+  { src: "/img/IMG-20240313-WA0070.jpg", alt: "SIRUNTU wedding documentation moment 13" },
+  { src: "/img/IMG-20240313-WA0072.jpg", alt: "SIRUNTU wedding documentation moment 14" },
+  { src: "/img/IMG-20240313-WA0073.jpg", alt: "SIRUNTU wedding documentation moment 15" },
+  { src: "/img/IMG-20240314-WA0008.jpg", alt: "SIRUNTU wedding documentation moment 16" },
+  { src: "/img/IMG-20240314-WA0009.jpg", alt: "SIRUNTU wedding documentation moment 17" },
+  { src: "/img/IMG-20240314-WA0010.jpg", alt: "SIRUNTU wedding documentation moment 18" },
+  { src: "/img/IMG-20240314-WA0034.jpg", alt: "SIRUNTU wedding documentation moment 19" },
+  { src: "/img/IMG-20240314-WA0045.jpg", alt: "SIRUNTU wedding documentation moment 20" },
+];
+
+const mobilePhotoLayouts = [
+  { width: 244, height: 360, offset: -12 },
+  { width: 196, height: 280, offset: 15 },
+  { width: 310, height: 420, offset: -6 },
+  { width: 230, height: 320, offset: 12 },
+  { width: 270, height: 390, offset: -15 },
+  { width: 218, height: 300, offset: 8 },
+  { width: 320, height: 440, offset: -3 },
+  { width: 242, height: 335, offset: 16 },
+  { width: 284, height: 405, offset: -11 },
+  { width: 202, height: 285, offset: 6 },
+  { width: 312, height: 430, offset: -8 },
+  { width: 225, height: 315, offset: 14 },
+  { width: 260, height: 375, offset: -16 },
+  { width: 300, height: 415, offset: 4 },
+  { width: 214, height: 295, offset: 10 },
+  { width: 318, height: 445, offset: -5 },
+  { width: 238, height: 330, offset: 15 },
+  { width: 280, height: 400, offset: -13 },
+  { width: 208, height: 290, offset: 7 },
+  { width: 305, height: 425, offset: -9 },
 ];
 
 export default function Documentation() {
@@ -79,11 +105,15 @@ export default function Documentation() {
   }, []);
 
   if (isMobile === null) {
-    return <section id="documentation" className="section-white min-h-screen" />;
+    return (
+      <section id="documentation" className="section-white relative isolate min-h-screen overflow-hidden">
+        <SiruntuWatermarks section="documentation" />
+      </section>
+    );
   }
 
   return (
-    <section id="documentation" className="section-white relative overflow-hidden">
+    <section id="documentation" className={`${isMobile ? "text-text" : "section-white"} relative overflow-x-clip`}>
       {isMobile ? (
         <div className="relative isolate px-6 pb-12 pt-20">
           <div
@@ -93,7 +123,8 @@ export default function Documentation() {
               backgroundSize: "44px 44px",
             }}
           />
-          <div className="relative mx-auto max-w-3xl">
+          <SiruntuWatermarks section="documentation" />
+          <div className="relative z-10 mx-auto max-w-3xl">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
                 <SiruntuMark animate={false} />
@@ -108,8 +139,8 @@ export default function Documentation() {
             </p>
           </div>
 
-          <div className="relative mt-12 flex w-full items-center justify-center overflow-hidden">
-            <Carousel002 images={mobileImages} loop />
+          <div className="relative -mx-6 mt-12 w-[calc(100%+3rem)]">
+            <MobileDocumentationGallery images={mobileImages.slice(0, 20)} viewportWidth={dimension.width} viewportHeight={dimension.height} />
           </div>
         </div>
       ) : (
@@ -122,7 +153,8 @@ export default function Documentation() {
                 backgroundSize: "clamp(42px, 6vw, 80px) clamp(42px, 6vw, 80px)",
               }}
             />
-            <div className="relative w-full">
+            <SiruntuWatermarks section="documentation" />
+            <div className="relative z-10 w-full">
               <div className="flex items-center gap-3">
                 <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
                   <SiruntuMark animate={false} />
@@ -132,7 +164,7 @@ export default function Documentation() {
               <h2 className="mt-7 max-w-5xl border-2 border-text bg-bg/70 p-7 font-display text-5xl leading-[0.94] text-text shadow-[8px_8px_0_var(--gold)] sm:text-6xl lg:text-7xl">
                 Visual documentation crafted to feel <span className="italic text-gold-soft">cinematic, refined, and ready to publish.</span>
               </h2>
-              <p className="mt-7 max-w-3xl text-base leading-8 text-text-muted sm:text-lg">We capture wedding moments, brand stories, and behind-the-scenes details with a presentation style that feels intentional on every scroll.</p>
+              <p className="mt-7 max-w-3xl text-base leading-8 text-text-muted sm:text-lg">We capture wedding moments, brand stories, and behind the scenes details with a presentation style that feels intentional on every scroll.</p>
             </div>
           </div>
 
@@ -166,94 +198,62 @@ function DesktopColumn({ images, y }: DesktopColumnProps) {
   );
 }
 
-function Carousel002({
-  images,
-  className,
-  showPagination = false,
-  showNavigation = true,
-  loop = true,
-  autoplay = false,
-  spaceBetween = 40,
-}: {
-  images: { src: string; alt: string }[];
-  className?: string;
-  showPagination?: boolean;
-  showNavigation?: boolean;
-  loop?: boolean;
-  autoplay?: boolean;
-  spaceBetween?: number;
-}) {
-  const css = `
-  .Carousal_002 {
-    padding-bottom: 50px !important;
-  }
-  `;
+function MobileDocumentationGallery({ images, viewportWidth, viewportHeight }: { images: { src: string; alt: string }[]; viewportWidth: number; viewportHeight: number }) {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [horizontalTravel, setHorizontalTravel] = useState(0);
+  const maxImageWidth = Math.max(0, viewportWidth - 48);
 
+  useEffect(() => {
+    const viewport = viewportRef.current;
+    const content = contentRef.current;
+    if (!viewport || !content) return;
+
+    const measureTravel = () => {
+      setHorizontalTravel(Math.max(0, content.scrollWidth - viewport.clientWidth));
+    };
+
+    const resizeObserver = new ResizeObserver(measureTravel);
+    resizeObserver.observe(viewport);
+    resizeObserver.observe(content);
+    measureTravel();
+
+    return () => resizeObserver.disconnect();
+  }, [images.length, viewportHeight]);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end end"],
+  });
+  const x = useTransform(scrollYProgress, [0, 0.88, 1], [0, -horizontalTravel, -horizontalTravel]);
   return (
-    <motion.div
-      initial={{ opacity: 0, translateY: 20 }}
-      animate={{ opacity: 1, translateY: 0 }}
-      transition={{
-        duration: 0.3,
-        delay: 0.5,
-      }}
-      className={cn("relative w-full max-w-3xl", className)}
-    >
-      <style>{css}</style>
+    <div ref={sectionRef} style={{ height: `${viewportHeight + horizontalTravel}px` }} className="relative">
+      <div ref={viewportRef} className="sticky top-0 flex h-dvh items-center overflow-hidden bg-bg">
+        <motion.div ref={contentRef} style={{ x }} className="flex h-full w-max items-center gap-8 px-6">
+          {images.map((image, index) => {
+            const layout = mobilePhotoLayouts[index % mobilePhotoLayouts.length];
 
-      <Swiper
-        spaceBetween={spaceBetween}
-        autoplay={
-          autoplay
-            ? {
-                delay: 1800,
-                pauseOnMouseEnter: true,
-                disableOnInteraction: false,
-              }
-            : false
-        }
-        effect="cards"
-        grabCursor
-        loop={loop}
-        pagination={
-          showPagination
-            ? {
-                clickable: true,
-              }
-            : false
-        }
-        navigation={
-          showNavigation
-            ? {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-              }
-            : false
-        }
-        className="Carousal_002 h-[380px] w-[260px] sm:h-[430px] sm:w-[300px]"
-        modules={[EffectCards, Autoplay, Pagination, Navigation]}
-      >
-        {images.map((image, index) => (
-          <SwiperSlide key={`${image.src}-${index}`} className="overflow-hidden rounded-3xl">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img className="h-full w-full object-cover" src={image.src} alt={image.alt} />
-          </SwiperSlide>
-        ))}
-        {showNavigation && (
-          <div>
-            <div className="swiper-button-next after:hidden">
-              <ChevronRightIcon className="h-6 w-6 text-white" />
-            </div>
-            <div className="swiper-button-prev after:hidden">
-              <ChevronLeftIcon className="h-6 w-6 text-white" />
-            </div>
-          </div>
-        )}
-      </Swiper>
-    </motion.div>
+            return (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                key={image.src}
+                src={image.src}
+                alt={image.alt}
+                loading={index < 3 ? "eager" : "lazy"}
+                decoding="async"
+                style={{
+                  width: `${Math.min(layout.width, maxImageWidth)}px`,
+                  height: `${layout.height}px`,
+                  maxHeight: "60dvh",
+                  transform: `translateY(${layout.offset}vh)`,
+                }}
+                className="block shrink-0 rounded-lg object-contain drop-shadow-[0_10px_18px_rgba(12,17,31,0.2)]"
+              />
+            );
+          })}
+        </motion.div>
+      </div>
+    </div>
   );
-}
-
-function cn(...classes: Array<string | undefined | false>) {
-  return classes.filter(Boolean).join(" ");
 }

@@ -4,6 +4,8 @@ import { useEffect, useRef, useState, type PointerEvent } from "react";
 import { ArrowUpRight, Sparkles } from "lucide-react";
 import { motion, useMotionValue, useSpring, useTransform, type Variants } from "framer-motion";
 import SiruntuMark from "@/components/marks/SiruntuMark";
+import SectionScrollButton from "@/components/SectionScrollButton";
+import SiruntuWatermarks from "@/components/sections/SiruntuWatermarks";
 
 const container: Variants = {
   hidden: {},
@@ -32,25 +34,25 @@ const fadeUp: Variants = {
 
 const heroFrames = [
   {
-    label: "Field Work",
+    label: "Event",
     src: "/img/IMG-20240314-WA0090.jpg",
     className: "col-span-5 row-span-3 sm:col-span-6 lg:col-span-5",
     imageClassName: "object-[54%_45%]",
   },
   {
-    label: "Brand System",
+    label: "Wedding",
     src: "/img/IMG-20240316-WA0043.jpg",
     className: "col-span-7 row-span-2 sm:col-span-6 lg:col-span-7",
     imageClassName: "object-[48%_45%]",
   },
   {
-    label: "Launch Detail",
+    label: "Social Media Handling",
     src: "/img/IMG-20240314-WA0111.jpg",
     className: "col-span-7 row-span-2 sm:col-span-7 lg:col-span-6",
     imageClassName: "object-[50%_55%]",
   },
   {
-    label: "Content Ops",
+    label: " Personal social media branding",
     src: "/img/IMG-20240317-WA0048.jpg",
     className: "col-span-5 row-span-3 sm:col-span-5 lg:col-span-6",
     imageClassName: "object-[48%_42%]",
@@ -59,17 +61,7 @@ const heroFrames = [
 
 const capabilities = ["Visual Direction", "Photo + Video", "Social Content", "Brand Story"];
 
-function HeroFrame({
-  label,
-  src,
-  className,
-  imageClassName,
-}: {
-  label: string;
-  src: string;
-  className: string;
-  imageClassName: string;
-}) {
+function HeroFrame({ label, src, className, imageClassName }: { label: string; src: string; className: string; imageClassName: string }) {
   return (
     <div className={`group relative overflow-hidden border-2 border-text bg-surface shadow-[6px_6px_0_var(--gold)] ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -146,11 +138,17 @@ export default function Hero({ ready }: { ready: boolean }) {
         }}
       />
       <div className="pointer-events-none absolute -left-20 top-16 h-56 w-56 border-2 border-gold/30 bg-gold/10 sm:h-72 sm:w-72 lg:left-8 lg:top-20 lg:h-80 lg:w-80" />
-      <motion.div aria-hidden="true" style={{ x: markX, y: markY }} className="pointer-events-none absolute -right-14 top-14 w-[220px] rotate-[-10deg] text-text opacity-[0.045] sm:w-[340px] lg:right-10 lg:top-4 lg:w-[520px]">
+      <motion.div aria-hidden="true" style={{ x: markX, y: markY }} className="pointer-events-none absolute -right-14 top-14 w-[220px] rotate-[-10deg] text-text opacity-[0.16] sm:w-[340px] lg:right-10 lg:top-4 lg:w-[520px]">
         <SiruntuMark animate={false} />
       </motion.div>
+      <SiruntuWatermarks section="hero" />
 
-      <motion.div variants={container} initial="hidden" animate={ready ? "show" : "hidden"} className="relative z-10 mx-auto grid w-full max-w-[1500px] flex-1 content-center gap-7 lg:grid-cols-[minmax(0,1.03fr)_minmax(420px,0.97fr)] lg:items-center lg:gap-8 xl:gap-12">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate={ready ? "show" : "hidden"}
+        className="relative z-10 mx-auto grid w-full max-w-[1500px] flex-1 content-center gap-7 lg:grid-cols-[minmax(0,1.03fr)_minmax(420px,0.97fr)] lg:items-center lg:gap-8 xl:gap-12"
+      >
         <div className="min-w-0">
           <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-3">
             <span className="flex h-12 w-12 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)]">
@@ -167,7 +165,10 @@ export default function Hero({ ready }: { ready: boolean }) {
                 </motion.span>
               </span>
               <span className="block overflow-hidden pb-2">
-                <motion.span variants={lineReveal} className="inline-block -rotate-1 border-2 border-text bg-gold px-2 text-[clamp(2.8rem,14vw,5.8rem)] font-black italic leading-[0.9] text-bg shadow-[7px_7px_0_var(--text)] sm:px-4 sm:text-[clamp(4.4rem,10vw,7.6rem)] lg:text-[clamp(4.8rem,7.2vw,8.3rem)]">
+                <motion.span
+                  variants={lineReveal}
+                  className="inline-block -rotate-1 border-2 border-text bg-gold px-2 text-[clamp(2.8rem,14vw,5.8rem)] font-black italic leading-[0.9] text-bg shadow-[7px_7px_0_var(--text)] sm:px-4 sm:text-[clamp(4.4rem,10vw,7.6rem)] lg:text-[clamp(4.8rem,7.2vw,8.3rem)]"
+                >
                   visual stories
                 </motion.span>
               </span>
@@ -190,13 +191,19 @@ export default function Hero({ ready }: { ready: boolean }) {
           </motion.div>
 
           <motion.div variants={fadeUp} className="mt-6 flex flex-col gap-3 min-[420px]:flex-row sm:mt-8">
-            <a href="#work" className="group inline-flex min-h-12 items-center justify-center gap-2 border-2 border-text bg-text px-5 py-3 font-sans text-xs font-black uppercase tracking-[0.18em] text-bg shadow-[5px_5px_0_var(--gold)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_var(--gold)] sm:px-6">
+            <SectionScrollButton
+              sectionId="work"
+              className="group inline-flex min-h-12 items-center justify-center gap-2 border-2 border-text bg-text px-5 py-3 font-sans text-xs font-black uppercase tracking-[0.18em] text-bg shadow-[5px_5px_0_var(--gold)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[7px_7px_0_var(--gold)] sm:px-6"
+            >
               View Work
               <ArrowUpRight size={16} className="transition duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" aria-hidden="true" />
-            </a>
-            <a href="#contact" className="inline-flex min-h-12 items-center justify-center border-2 border-line bg-bg/65 px-5 py-3 font-sans text-xs font-black uppercase tracking-[0.18em] text-text shadow-[5px_5px_0_rgba(255,255,255,0.12)] transition duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold-soft sm:px-6">
-              Start Project
-            </a>
+            </SectionScrollButton>
+            <SectionScrollButton
+              sectionId="contact"
+              className="inline-flex min-h-12 items-center justify-center border-2 border-line bg-bg/65 px-5 py-3 font-sans text-xs font-black uppercase tracking-[0.18em] text-text shadow-[5px_5px_0_rgba(255,255,255,0.12)] transition duration-300 hover:-translate-y-0.5 hover:border-gold hover:text-gold-soft sm:px-6"
+            >
+              Contact us
+            </SectionScrollButton>
           </motion.div>
 
           <motion.div variants={fadeUp} className="mt-7 grid grid-cols-2 border-2 border-line bg-bg/40 sm:mt-9 sm:grid-cols-4">
@@ -210,7 +217,10 @@ export default function Hero({ ready }: { ready: boolean }) {
         </div>
 
         <motion.div variants={fadeUp} style={{ perspective: 1100 }} className="relative min-w-0 lg:min-h-[620px]">
-          <motion.div style={{ x: accentX }} className="absolute -right-2 top-2 z-20 hidden rotate-3 border-2 border-text bg-gold px-4 py-2 font-sans text-[10px] font-black uppercase tracking-[0.2em] text-bg shadow-[5px_5px_0_var(--text)] sm:block lg:right-4">
+          <motion.div
+            style={{ x: accentX }}
+            className="absolute -right-2 top-2 z-20 hidden rotate-3 border-2 border-text bg-gold px-4 py-2 font-sans text-[10px] font-black uppercase tracking-[0.2em] text-bg shadow-[5px_5px_0_var(--text)] sm:block lg:right-4"
+          >
             Concept to publish
           </motion.div>
 
@@ -245,7 +255,12 @@ export default function Hero({ ready }: { ready: boolean }) {
         </motion.div>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0 }} animate={ready ? { opacity: 1 } : {}} transition={{ duration: 0.6, delay: 1.05 }} className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-3 font-sans text-[10px] font-black uppercase tracking-[0.22em] text-text-muted lg:flex">
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={ready ? { opacity: 1 } : {}}
+        transition={{ duration: 0.6, delay: 1.05 }}
+        className="absolute bottom-4 left-1/2 z-20 hidden -translate-x-1/2 items-center gap-3 font-sans text-[10px] font-black uppercase tracking-[0.22em] text-text-muted lg:flex"
+      >
         <span>Scroll</span>
         <motion.span animate={{ x: [0, 8, 0] }} transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }} className="h-px w-14 bg-gold" />
       </motion.div>

@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, animate, motion, useMotionValue, useTransform } from "framer-motion";
 import SiruntuMark from "@/components/marks/SiruntuMark";
+import SiruntuWatermarks from "@/components/sections/SiruntuWatermarks";
 
 const WORDS = ["Explore", "Capture", "Shape", "Collaborate"];
 const BRAND = "SIRUNTU'";
@@ -106,7 +107,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
           animate="visible"
           exit="exit"
           transition={{ duration: EXIT_DURATION, ease: [0.76, 0, 0.24, 1] }}
-          className="section-surface fixed inset-0 z-[100] flex flex-col items-center justify-center overflow-hidden px-6"
+          className="section-surface fixed inset-0 z-[100] isolate flex flex-col items-center justify-center overflow-hidden px-6"
           role="status"
           aria-live="polite"
           aria-label="Loading SIRUNTU' Creative Exploration"
@@ -118,6 +119,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
               backgroundSize: "clamp(36px, 5vw, 72px) clamp(36px, 5vw, 72px)",
             }}
           />
+          <SiruntuWatermarks section="preloader" />
           <div className="pointer-events-none absolute -left-16 top-20 h-48 w-48 border-2 border-gold/25 bg-gold/10 sm:h-64 sm:w-64" />
           <div className="pointer-events-none absolute -right-20 bottom-14 h-56 w-56 border-2 border-line bg-bg/30 sm:h-72 sm:w-72" />
 
@@ -152,7 +154,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
             Jakarta, Indonesia
           </div>
 
-          <div className="relative w-full max-w-[520px] border-2 border-text bg-bg/78 p-6 text-center shadow-[10px_10px_0_var(--gold)] backdrop-blur sm:p-8">
+          <div className="relative z-10 w-full max-w-[520px] border-2 border-text bg-bg/78 p-6 text-center shadow-[10px_10px_0_var(--gold)] backdrop-blur sm:p-8">
             <div className="absolute -left-3 -top-3 h-8 w-8 border-l-2 border-t-2 border-gold" />
             <div className="absolute -bottom-3 -right-3 h-8 w-8 border-b-2 border-r-2 border-gold" />
 
@@ -160,7 +162,7 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
               <SiruntuMark />
             </div>
 
-            <div className="mt-8 flex h-[1.5em] items-center justify-center overflow-hidden px-6 text-center sm:mt-10">
+            <div className="mt-8 flex h-12 items-center justify-center overflow-hidden px-6 text-center sm:mt-10 sm:h-16">
               <AnimatePresence mode="wait">
                 {phase === "words" ? (
                   <motion.span
@@ -169,12 +171,18 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -16, opacity: 0 }}
                     transition={{ duration: 0.35, ease: "easeOut" }}
-                    className="block font-display text-3xl italic text-gold-soft sm:text-4xl"
+                    className="block font-display text-3xl italic leading-[1.2] text-gold-soft sm:text-4xl"
                   >
                     {WORDS[wordIndex]}
                   </motion.span>
                 ) : (
-                  <motion.span key="brand" initial={{ y: 16, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.4, ease: "easeOut" }} className="block font-display text-4xl font-black uppercase text-text sm:text-5xl">
+                  <motion.span
+                    key="brand"
+                    initial={{ y: 16, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ duration: 0.4, ease: "easeOut" }}
+                    className="block font-display text-4xl font-black uppercase leading-[1.2] text-text sm:text-5xl"
+                  >
                     {BRAND}
                   </motion.span>
                 )}
@@ -183,7 +191,12 @@ export default function Preloader({ onComplete }: { onComplete?: () => void }) {
 
             <div className="mt-4 h-8">
               {phase !== "words" && (
-                <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.25, duration: 0.4 }} className="mx-auto max-w-[32ch] text-center font-sans text-[11px] font-black uppercase tracking-[0.14em] text-text-muted sm:text-xs">
+                <motion.p
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.25, duration: 0.4 }}
+                  className="mx-auto max-w-[32ch] text-center font-sans text-[11px] font-black uppercase tracking-[0.14em] text-text-muted sm:text-xs"
+                >
                   {TAGLINE}
                 </motion.p>
               )}

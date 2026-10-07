@@ -74,9 +74,7 @@
    pink glow rising from the top — enough tonal difference for the
    curtain-rise transition out of the Preloader to read clearly. */
 .section-surface {
-  background:
-    radial-gradient(120% 100% at 50% -10%, rgba(227, 155, 189, 0.1), transparent 55%),
-    var(--bg-section);
+  background: radial-gradient(120% 100% at 50% -10%, rgba(227, 155, 189, 0.1), transparent 55%), var(--bg-section);
 }
 
 /* Soft pastel pink section — warm, human sections (About, testimonials...).
@@ -160,6 +158,21 @@ body {
 .work-modal-scrollbar::-webkit-scrollbar-button,
 .work-modal-scrollbar::-webkit-scrollbar-corner {
   display: none;
+}
+
+.works-carousel {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.works-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+@media (max-width: 767px) {
+  .work-photo-carousel .swiper-slide:not(.swiper-slide-active) {
+    filter: brightness(0.45) saturate(0.8) drop-shadow(0 6px 12px rgba(0, 0, 0, 0.28));
+  }
 }
 
 /* Respect reduced motion preference site-wide */

@@ -2,6 +2,7 @@
 
 import { motion, type Variants } from "framer-motion";
 import SiruntuMark from "@/components/marks/SiruntuMark";
+import SiruntuWatermarks from "@/components/sections/SiruntuWatermarks";
 
 /**
  * About
@@ -39,7 +40,7 @@ const steps = [
   {
     n: "02",
     title: "Capture",
-    desc: "We document real moments on location, from wedding ceremonies to brand and product sessions.",
+    desc: "From wedding ceremonies and events to brands and products, we turn moments into stories worth keeping.",
   },
   {
     n: "03",
@@ -67,8 +68,9 @@ export default function About() {
         }}
       />
       <div className="pointer-events-none absolute -right-16 top-16 h-52 w-52 border-2 border-gold/25 bg-surface/45 sm:h-72 sm:w-72" />
+      <SiruntuWatermarks section="about" light />
 
-      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="relative mx-auto max-w-6xl">
+      <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }} className="relative z-10 mx-auto max-w-6xl">
         <motion.div variants={fadeUp} className="flex items-center gap-3">
           <span className="flex h-10 w-10 items-center justify-center border-2 border-text bg-bg p-2 shadow-[4px_4px_0_var(--gold)] text-text">
             <SiruntuMark animate={false} />
@@ -82,11 +84,10 @@ export default function About() {
 
         <motion.div variants={fadeUp} className="mt-8 grid gap-4 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:mt-14 lg:max-w-3xl">
           <p className="font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-            We are a compact creative team supported by trusted collaborators, working across wedding documentation, brand and packaging content, social media strategy, and long-form documentary storytelling.
+            We are a youth creative team supported by trusted handling, working across wedding documentation, brand and packaging content, social media strategy and content, and documentary event from raw to finished edit.
           </p>
           <p className="font-sans text-sm leading-relaxed text-text-muted sm:text-base">
-            Based in Jakarta, Indonesia, our portfolio spans skincare branding for KENIYORU, food-grade packaging storytelling for Sealpak Packaging (PT. Datindo Image Werks), wedding content productions, and ongoing documentary
-            collaborations.
+            Based in Jakarta, Indonesia, our portfolio spans skincare branding for KENIYORU, food-grade packaging storytelling for Sealpak Packaging (PT. Datindo Image Werks), wedding content productions, and many girls event.
           </p>
         </motion.div>
 

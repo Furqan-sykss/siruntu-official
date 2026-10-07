@@ -1,9 +1,18 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Images, MapPin, Play, X } from "lucide-react";
+import { createPortal } from "react-dom";
+import { ChevronLeft, ChevronRight, Images, MapPin, X } from "lucide-react";
 import { AnimatePresence, motion, useScroll, useTransform, type MotionValue, type Variants } from "framer-motion";
+import Image from "next/image";
+import { EffectCards, EffectFade, Keyboard } from "swiper/modules";
+import type { Swiper as SwiperInstance } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
 import SiruntuMark from "@/components/marks/SiruntuMark";
+import SiruntuWatermarks from "@/components/sections/SiruntuWatermarks";
+import "swiper/css";
+import "swiper/css/effect-cards";
+import "swiper/css/effect-fade";
 
 /**
  * Works — sticky stacking cards, adapted from the skiper16 reference
@@ -17,6 +26,7 @@ import SiruntuMark from "@/components/marks/SiruntuMark";
 const projects = [
   {
     title: "Trip Surf Documentary",
+    imageFolder: "tripsurf-image",
     category: "Long-term Documentary",
     venue: "Sekaringsrengenge Surf Trips",
     summary: "Captured the ongoing women’s surf journey for Sekaringsrengenge, documenting each departure with thoughtful storytelling and editorial continuity.",
@@ -29,6 +39,7 @@ const projects = [
   },
   {
     title: "WCC Wedding Content",
+    imageFolder: "wccwedding-image",
     category: "Documentary & Editing",
     venue: "Wedding Content Service",
     summary: "Produced documentary wedding content and polished edits for WCC, serving personal clients and event organizer collaborations.",
@@ -41,6 +52,7 @@ const projects = [
   },
   {
     title: "Sealpak Packaging",
+    imageFolder: "sealpak-image",
     category: "Packaging & Social Media",
     venue: "Food-grade Packaging",
     summary: "Translated Sealpak’s food-safe packaging expertise into a stronger brand story and social media presence.",
@@ -53,6 +65,7 @@ const projects = [
   },
   {
     title: "KENIYORU Skincare",
+    imageFolder: "keniyoru-image",
     category: "Brand Strategy",
     venue: "Facial Serum Brand",
     summary: "Shaped KENIYORU's brand image and social voice for its facial serum line with polished strategy and content direction.",
@@ -66,6 +79,40 @@ const projects = [
 ];
 
 type Project = (typeof projects)[number];
+
+const projectPhotoFiles = [
+  "balazs-ketyi-9VzoRKfBsMM-unsplash.jpg",
+  "balazs-ketyi-FeuEg-8XlA8-unsplash.jpg",
+  "cherrydeck-oVWc3lehRz8-unsplash.jpg",
+  "cherrydeck-Qx7A7SChpnI-unsplash.jpg",
+  "cherrydeck-rMILC1PIwM0-unsplash.jpg",
+  "cherrydeck-UpsEF48wAgk-unsplash.jpg",
+  "daniela-almeida-ys2phgbHfJU-unsplash.jpg",
+  "kobu-agency-csJt89dL9pE-unsplash.jpg",
+  "krisztian-tabori-IyaNci0CyRk-unsplash.jpg",
+  "labib-jaffar-ylx85nvunvw-unsplash.jpg",
+  "marvin-meyer-SYTO3xs06fU-unsplash.jpg",
+  "nikita-kachanovsky-g-YiX8ynmnY-unsplash.jpg",
+  "patrik-michalicka-r3iAqHb7JWs-unsplash.jpg",
+  "pexels-aleson-padilha-945919991-34104803.jpg",
+  "pexels-cadomaestro-1170412.jpg",
+  "pexels-canvastudio-3194519.jpg",
+  "pexels-cottonbro-3888216.jpg",
+  "pexels-ivan-s-8117415.jpg",
+  "pexels-jakubzerdzicki-31313716.jpg",
+  "pexels-jakubzerdzicki-31949770.jpg",
+  "pexels-karola-g2-6224.jpg",
+  "pexels-kindelmedia-7688336.jpg",
+  "pexels-mikael-blomkvist-6476257.jpg",
+  "pexels-mikael-blomkvist-6476578.jpg",
+  "pexels-mikael-blomkvist-6476580.jpg",
+  "pexels-mike-c-2151163165-31663601.jpg",
+  "pexels-ofspace-16323580.jpg",
+  "pexels-silverkblack-23496709.jpg",
+  "pexels-silverkblack-39190479.jpg",
+  "pexels-thirdman-7180492.jpg",
+  "roberto-nickson-TB_cvdUHUuc-unsplash.jpg",
+];
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
@@ -86,6 +133,7 @@ function ProjectCard({
   progress,
   range,
   targetScale,
+  isDesktop,
 }: {
   i: number;
   total: number;
@@ -96,6 +144,7 @@ function ProjectCard({
   progress: MotionValue<number>;
   range: [number, number];
   targetScale: number;
+  isDesktop: boolean;
 }) {
   const scale = useTransform(progress, range, [1, targetScale]);
 
@@ -107,15 +156,15 @@ function ProjectCard({
   };
 
   return (
-    <div className="sticky top-[8vh] flex items-center justify-center py-3 sm:top-[10vh] sm:py-4">
+    <div className="works-slide relative flex w-[88%] shrink-0 snap-center items-center justify-center py-3 md:sticky md:top-[10vh] md:w-full md:shrink md:snap-none md:py-4">
       <motion.div
         role="button"
         tabIndex={0}
         aria-label={`Open details for ${title}`}
         onClick={onOpen}
         onKeyDown={openFromKeyboard}
-        style={{ scale, top: `${i * 10}px` }}
-        className="group relative aspect-video w-full max-w-4xl origin-top cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface/60 outline-none transition-colors duration-300 hover:border-gold/45 focus-visible:border-gold/70 focus-visible:ring-2 focus-visible:ring-gold/35 xl:max-w-none"
+        style={{ scale: isDesktop ? scale : 1, top: isDesktop ? `${i * 10}px` : 0 }}
+        className="group relative aspect-4/5 w-full max-w-4xl origin-top cursor-pointer overflow-hidden rounded-2xl border border-line bg-surface/60 outline-none transition-colors duration-300 hover:border-gold/45 focus-visible:border-gold/70 focus-visible:ring-2 focus-visible:ring-gold/35 md:aspect-video xl:max-w-none"
       >
         <div
           className="absolute inset-0 opacity-[0.06] transition-opacity duration-300 group-hover:opacity-[0.09]"
@@ -130,10 +179,10 @@ function ProjectCard({
           {String(i + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
         </div>
 
-        <div className="absolute inset-x-0 bottom-0 flex flex-wrap items-end justify-between gap-2 p-4 sm:p-6">
+        <div className="absolute inset-x-0 bottom-0 flex flex-col items-start gap-3 p-5 sm:p-6 md:flex-row md:items-end md:justify-between md:gap-2">
           <div>
             <h3 className="font-display text-lg text-text sm:text-2xl lg:text-3xl">{title}</h3>
-            <p className="mt-1 font-sans text-xs text-text-muted sm:text-sm">{summary}</p>
+            <p className="mt-1 max-w-2xl font-sans text-xs leading-5 text-text-muted sm:text-sm">{summary}</p>
           </div>
           <span className="shrink-0 rounded-full border border-gold/40 px-3 py-1 font-sans text-[10px] uppercase tracking-[0.15em] text-gold sm:text-[11px]">{category}</span>
         </div>
@@ -145,6 +194,18 @@ function ProjectCard({
 function ProjectModal({ project, onClose }: { project: Project; onClose: () => void }) {
   const panelScrollRef = useRef<HTMLDivElement>(null);
   const detailsScrollRef = useRef<HTMLDivElement>(null);
+  const swiperRef = useRef<SwiperInstance | null>(null);
+  const [activePhoto, setActivePhoto] = useState(0);
+  const [isMobile, setIsMobile] = useState(() => typeof window !== "undefined" && window.matchMedia("(max-width: 767px)").matches);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)");
+    const updateMobileState = () => setIsMobile(mediaQuery.matches);
+
+    updateMobileState();
+    mediaQuery.addEventListener("change", updateMobileState);
+    return () => mediaQuery.removeEventListener("change", updateMobileState);
+  }, []);
 
   const stopScrollPropagation = (event: React.WheelEvent | React.TouchEvent) => {
     event.stopPropagation();
@@ -175,7 +236,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     };
   }, [onClose]);
 
-  return (
+  return createPortal(
     <motion.div
       className="fixed inset-0 z-[80] flex items-center justify-center px-4 py-4 sm:px-6 lg:px-8"
       initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
@@ -201,7 +262,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         exit={{ opacity: 0, y: 18, scale: 0.97, filter: "blur(8px)" }}
         transition={{ duration: 0.44, ease: [0.16, 1, 0.3, 1] }}
       >
-        <div className="relative min-h-[280px] overflow-hidden border-b border-line bg-bg/70 sm:min-h-[360px] lg:h-full lg:min-h-0 lg:border-b-0 lg:border-r">
+        <div className="relative flex min-h-[280px] shrink-0 flex-col overflow-hidden border-b border-line bg-bg/70 sm:min-h-[360px] lg:h-full lg:min-h-0 lg:shrink lg:border-b-0 lg:border-r">
           <div
             className="absolute inset-0 opacity-[0.08]"
             style={{
@@ -209,28 +270,81 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
             }}
           />
           <div className="absolute inset-5 rounded-xl border border-gold/25 sm:inset-7" />
-          <div className="relative flex h-full min-h-[280px] flex-col justify-between p-5 sm:min-h-[360px] sm:p-7 lg:min-h-full">
+          <div className="relative z-10 flex min-h-[280px] flex-1 flex-col p-5 sm:min-h-[360px] sm:p-7 lg:min-h-0">
             <div className="flex items-center justify-between gap-4">
               <span className="inline-flex items-center gap-2 rounded-full border border-line bg-surface/75 px-3 py-1.5 font-sans text-[10px] uppercase tracking-[0.16em] text-text-muted">
                 <Images size={14} aria-hidden="true" />
                 {project.previewLabel}
               </span>
-              <span className="h-3 w-3 border-r border-t border-gold/60" />
+              <span className="font-sans text-[10px] tabular-nums tracking-[0.16em] text-text-muted" aria-live="polite">
+                {String(activePhoto + 1).padStart(2, "0")} / {String(projectPhotoFiles.length).padStart(2, "0")}
+              </span>
             </div>
 
-            <div className="mx-auto flex aspect-[4/5] w-full max-w-[320px] items-center justify-center rounded-xl border border-line bg-surface/55 p-6 text-center sm:max-w-[380px]">
-              <div>
-                <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-gold/35 text-gold">
-                  <Play size={20} fill="currentColor" aria-hidden="true" />
-                </span>
-                <p className="mt-5 font-display text-2xl text-text sm:text-3xl">{project.title}</p>
-                <p className="mt-3 font-sans text-xs uppercase tracking-[0.18em] text-text-muted">{project.category}</p>
+            <div
+              className="relative my-5 h-[min(45dvh,380px)] shrink-0 overflow-hidden rounded-xl border border-line bg-black/25 sm:h-[min(48dvh,430px)] lg:h-auto lg:min-h-0 lg:flex-1"
+              role="region"
+              aria-label={`${project.title} photo gallery`}
+              aria-roledescription="carousel"
+            >
+              <Swiper
+                key={isMobile ? "mobile-cards" : "desktop-fade"}
+                onSwiper={(swiper) => {
+                  swiperRef.current = swiper;
+                }}
+                onSlideChange={(swiper) => setActivePhoto(swiper.realIndex)}
+                modules={isMobile ? [EffectCards, Keyboard] : [EffectFade, Keyboard]}
+                effect={isMobile ? "cards" : "fade"}
+                cardsEffect={isMobile ? { perSlideOffset: 12 } : undefined}
+                fadeEffect={{ crossFade: true }}
+                grabCursor={isMobile}
+                loop={isMobile}
+                spaceBetween={isMobile ? 40 : 0}
+                keyboard={{ enabled: true, onlyInViewport: true }}
+                slidesPerView={1}
+                className={`work-photo-carousel mx-auto h-full ${isMobile ? "w-[calc(100%-36px)] max-w-[260px] overflow-visible" : "w-full"}`}
+              >
+                {projectPhotoFiles.map((fileName, index) => (
+                  <SwiperSlide key={fileName} style={{ height: isMobile ? "calc(100% - 50px)" : "100%", top: isMobile ? "25px" : undefined }} className="relative h-full w-full overflow-hidden rounded-3xl">
+                    <Image
+                      src={`/img/${project.imageFolder}/${fileName}`}
+                      alt={`${project.title} documentation photo ${index + 1}`}
+                      fill
+                      sizes="(max-width: 1023px) 100vw, 44vw"
+                      className="object-cover"
+                      loading={index === 0 ? "eager" : "lazy"}
+                    />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+
+              <div className="pointer-events-none absolute inset-x-6 top-1/2 z-20 flex -translate-y-1/2 justify-between" style={{ top: isMobile ? "calc(50% - 25px)" : "50%" }}>
+                <button
+                  type="button"
+                  aria-label="Previous photo"
+                  onClick={() => swiperRef.current?.slidePrev()}
+                  disabled={!isMobile && activePhoto === 0}
+                  className="pointer-events-auto flex h-9 w-9 items-center justify-center text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] transition-transform hover:scale-110 disabled:opacity-35 sm:h-10 sm:w-10"
+                >
+                  <ChevronLeft size={27} strokeWidth={3} aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  aria-label="Next photo"
+                  onClick={() => swiperRef.current?.slideNext()}
+                  disabled={!isMobile && activePhoto === projectPhotoFiles.length - 1}
+                  className="pointer-events-auto flex h-9 w-9 items-center justify-center text-white drop-shadow-[0_2px_5px_rgba(0,0,0,0.8)] transition-transform hover:scale-110 disabled:opacity-35 sm:h-10 sm:w-10"
+                >
+                  <ChevronRight size={27} strokeWidth={3} aria-hidden="true" />
+                </button>
               </div>
             </div>
 
-            <div className="flex items-end justify-between gap-4 font-sans text-[10px] uppercase tracking-[0.2em] text-text-muted">
-              <span>01 / 05</span>
-              <span>Portfolio ready</span>
+            <div className="mt-auto flex items-center gap-4">
+              <span className="shrink-0 font-sans text-[10px] uppercase tracking-[0.18em] text-text-muted">Documentation</span>
+              <div className="h-px flex-1 overflow-hidden bg-line" role="progressbar" aria-label="Photo position" aria-valuemin={1} aria-valuemax={projectPhotoFiles.length} aria-valuenow={activePhoto + 1}>
+                <motion.div className="h-full bg-gold" animate={{ width: `${((activePhoto + 1) / projectPhotoFiles.length) * 100}%` }} transition={{ duration: 0.3, ease: "easeOut" }} />
+              </div>
             </div>
           </div>
         </div>
@@ -295,17 +409,60 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
           </div>
         </div>
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }
 
 export default function Works() {
   const container = useRef<HTMLDivElement>(null);
   const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(false);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end end"],
   });
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
+    const updateDesktopState = () => setIsDesktop(mediaQuery.matches);
+
+    updateDesktopState();
+    mediaQuery.addEventListener("change", updateDesktopState);
+    return () => mediaQuery.removeEventListener("change", updateDesktopState);
+  }, []);
+
+  const scrollToSlide = (index: number) => {
+    const carousel = container.current;
+    const slide = carousel?.children[index] as HTMLElement | undefined;
+    if (!carousel || !slide) return;
+
+    carousel.scrollTo({
+      left: slide.offsetLeft - (carousel.clientWidth - slide.clientWidth) / 2,
+      behavior: "smooth",
+    });
+  };
+
+  const updateActiveSlide = () => {
+    const carousel = container.current;
+    if (!carousel) return;
+
+    const carouselCenter = carousel.getBoundingClientRect().left + carousel.clientWidth / 2;
+    let closestIndex = 0;
+    let closestDistance = Number.POSITIVE_INFINITY;
+
+    Array.from(carousel.children).forEach((child, index) => {
+      const bounds = child.getBoundingClientRect();
+      const distance = Math.abs(bounds.left + bounds.width / 2 - carouselCenter);
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index;
+      }
+    });
+
+    setActiveSlide(closestIndex);
+  };
 
   return (
     <section id="work" className="section-surface relative isolate px-6 py-24 sm:px-10 sm:py-28 lg:px-16 lg:py-32">
@@ -316,7 +473,8 @@ export default function Works() {
           backgroundSize: "clamp(40px, 6vw, 80px) clamp(40px, 6vw, 80px)",
         }}
       />
-      <div className="relative mx-auto max-w-7xl xl:grid xl:grid-cols-[minmax(280px,30%)_minmax(0,70%)] xl:gap-12">
+      <SiruntuWatermarks section="works" />
+      <div className="relative z-10 mx-auto max-w-7xl xl:grid xl:grid-cols-[minmax(280px,30%)_minmax(0,70%)] xl:gap-12">
         <div className="mb-14 max-w-6xl lg:mb-16 xl:sticky xl:top-20 xl:mb-0 xl:self-start">
           <motion.div initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.4 }} variants={fadeUp}>
             <div className="max-w-md xl:max-w-[24rem]">
@@ -330,7 +488,7 @@ export default function Works() {
                 A closer look at the stories, brands, and <span className="italic text-gold-soft">celebrations we have shaped.</span>
               </h2>
               <p className="mt-6 max-w-sm font-sans text-sm leading-7 text-text-muted sm:text-base xl:mt-5 xl:text-[15px] xl:leading-7">
-                From skincare strategy to packaging narratives, wedding content, and ongoing documentary projects, each story is designed with clear visual intent and professional polish.
+                From skincare strategy to packaging narratives, wedding content, and any event projects, each story is designed with clear visual intent and professional polish.
               </p>
               <div className="mt-8 hidden xl:block">
                 <span className="inline-flex border-2 border-line bg-bg/60 px-4 py-2 font-sans text-[11px] font-black uppercase tracking-[0.16em] text-gold">Selected stories</span>
@@ -339,10 +497,68 @@ export default function Works() {
           </motion.div>
         </div>
 
-        <div ref={container} className="relative mx-auto w-full min-w-0 max-w-4xl pb-[14vh] sm:pb-[18vh] lg:pb-[22vh] xl:max-w-none xl:pb-[14vh]">
+        <div
+          ref={container}
+          role="region"
+          aria-label="Selected work projects"
+          aria-roledescription="carousel"
+          tabIndex={0}
+          onScroll={updateActiveSlide}
+          className="works-carousel relative -mx-6 flex w-auto min-w-0 snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain px-[6vw] pb-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 sm:-mx-10 md:mx-auto md:block md:w-full md:max-w-4xl md:overflow-visible md:px-0 md:pb-[18vh] lg:pb-[22vh] xl:max-w-none xl:pb-[14vh]"
+        >
           {projects.map((p, i) => (
-            <ProjectCard key={p.title} i={i} total={projects.length} {...p} onOpen={() => setActiveProject(p)} progress={scrollYProgress} range={[i / projects.length, 1]} targetScale={Math.max(0.85, 1 - (projects.length - i - 1) * 0.05)} />
+            <ProjectCard
+              key={p.title}
+              i={i}
+              total={projects.length}
+              {...p}
+              onOpen={() => setActiveProject(p)}
+              progress={scrollYProgress}
+              range={[i / projects.length, 1]}
+              targetScale={Math.max(0.85, 1 - (projects.length - i - 1) * 0.05)}
+              isDesktop={isDesktop}
+            />
           ))}
+        </div>
+
+        <div className="mt-4 flex items-center justify-between md:hidden">
+          <div className="flex items-center gap-2" role="group" aria-label="Choose a project">
+            {projects.map((project, index) => (
+              <button
+                key={project.title}
+                type="button"
+                aria-label={`Go to project ${index + 1}: ${project.title}`}
+                aria-current={activeSlide === index ? "true" : undefined}
+                onClick={() => scrollToSlide(index)}
+                className={`flex h-10 items-center justify-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold/50 ${activeSlide === index ? "w-8" : "w-5"}`}
+              >
+                <span className={`h-1 w-full rounded-full transition-colors ${activeSlide === index ? "bg-gold" : "bg-line"}`} />
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              aria-label="Previous project"
+              onClick={() => scrollToSlide(Math.max(0, activeSlide - 1))}
+              disabled={activeSlide === 0}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-text transition-colors hover:border-gold/60 disabled:opacity-35"
+            >
+              <ChevronLeft size={18} aria-hidden="true" />
+            </button>
+            <span className="min-w-12 text-center font-sans text-xs tabular-nums text-text-muted" aria-live="polite">
+              {String(activeSlide + 1).padStart(2, "0")} / {String(projects.length).padStart(2, "0")}
+            </span>
+            <button
+              type="button"
+              aria-label="Next project"
+              onClick={() => scrollToSlide(Math.min(projects.length - 1, activeSlide + 1))}
+              disabled={activeSlide === projects.length - 1}
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-line text-text transition-colors hover:border-gold/60 disabled:opacity-35"
+            >
+              <ChevronRight size={18} aria-hidden="true" />
+            </button>
+          </div>
         </div>
       </div>
 
