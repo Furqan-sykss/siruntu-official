@@ -211,6 +211,11 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
     event.stopPropagation();
   };
 
+  const stopTouchPropagation = (event: React.TouchEvent) => {
+    if (event.target instanceof Element && event.target.closest(".work-photo-carousel")) return;
+    event.stopPropagation();
+  };
+
   useEffect(() => {
     const previousOverflow = document.body.style.overflow;
     const previousPaddingRight = document.body.style.paddingRight;
@@ -255,7 +260,7 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
         data-lenis-prevent-wheel
         data-lenis-prevent-touch
         onWheel={stopScrollPropagation}
-        onTouchMove={stopScrollPropagation}
+        onTouchMove={stopTouchPropagation}
         className="work-modal-scrollbar relative flex max-h-[calc(100dvh-2rem)] w-full max-w-6xl touch-pan-y flex-col overflow-y-auto overscroll-contain rounded-2xl border border-line bg-surface shadow-2xl shadow-black/35 lg:h-[min(760px,calc(100dvh-4rem))] lg:grid lg:grid-cols-[minmax(320px,44%)_minmax(0,56%)] lg:overflow-hidden"
         initial={{ opacity: 0, y: 28, scale: 0.96, filter: "blur(10px)" }}
         animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
@@ -297,7 +302,12 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                 effect={isMobile ? "cards" : "fade"}
                 cardsEffect={isMobile ? { perSlideOffset: 12 } : undefined}
                 fadeEffect={{ crossFade: true }}
-                grabCursor={isMobile}
+                allowTouchMove
+                simulateTouch
+                touchEventsTarget="container"
+                threshold={8}
+                touchAngle={55}
+                grabCursor
                 loop={isMobile}
                 spaceBetween={isMobile ? 40 : 0}
                 keyboard={{ enabled: true, onlyInViewport: true }}
@@ -311,7 +321,8 @@ function ProjectModal({ project, onClose }: { project: Project; onClose: () => v
                       alt={`${project.title} documentation photo ${index + 1}`}
                       fill
                       sizes="(max-width: 1023px) 100vw, 44vw"
-                      className="object-cover"
+                      draggable={false}
+                      className="pointer-events-none select-none object-cover"
                       loading={index === 0 ? "eager" : "lazy"}
                     />
                   </SwiperSlide>
